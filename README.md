@@ -9,6 +9,7 @@ This repository contains small C++ OpenGL projects created for **educational pur
 A simple OpenGL project that renders a rotating 3D cube.  
 This example demonstrates basic 3D transformations, rendering, and animation using OpenGL.
 
-![Spinning Cube](media/cube-rotating.gif)
+<img src="media/cube-rotating.gif" alt="Spinning Cube" width="250">
+
 
 ---
