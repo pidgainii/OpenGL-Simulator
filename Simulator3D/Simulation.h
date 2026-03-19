@@ -23,7 +23,7 @@ class Simulation {
 	public:
 		Simulation();
 
-		void Update(float time, std::vector<Renderable> scene);
+		void Update(float time, std::vector<Renderable> &scene);
 };
 
 

@@ -29,15 +29,11 @@ Simulation::Simulation() {}
 
 
 
-void Simulation::Update(float time, std::vector<Renderable> scene)
+void Simulation::Update(float dt, std::vector<Renderable>& scene)
 {
-	
 	// Updating movement for each object in scene
 	for (Renderable& r : scene)
 	{
-		glm::mat4 mW = glm::translate(r.modelWorld, r.translation);
-		mW = glm::rotate(mW, glm::radians(0.025f), r.rotation);
-
-		r.modelWorld = mW;
+		r.Update(dt);
 	}
 }

@@ -16,6 +16,7 @@
 #include "Renderer.h"
 #include "Loader.h"
 #include "Simulation.h"
+#include "Camera.h"
 
 #pragma once
 
@@ -31,9 +32,11 @@ public:
 	GLFWwindow* window;
 
 	float time;
+
 	Simulation sim;
 	Renderer renderer;
 	std::vector<Renderable> scene;
+	Camera camera;
 	Loader loader;
 
 
@@ -41,6 +44,7 @@ public:
 	// temporary, until camera class is created
 	glm::mat4 worldView;
 	glm::mat4 viewProj;
+
 };
 
 

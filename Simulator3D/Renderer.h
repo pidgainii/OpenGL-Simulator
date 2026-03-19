@@ -39,8 +39,6 @@ class Renderer
 
 		void EnableDepthTest();
 
-		void setModelMatrix(glm::mat4 modelWorld);
-
 		// TEMPORARY ARGUMENTS: worldView, viewProj
 		void Render(std::vector<Renderable> scene, glm::mat4 worldView, glm::mat4 viewProj);
 

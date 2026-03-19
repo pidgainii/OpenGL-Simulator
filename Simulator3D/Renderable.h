@@ -21,14 +21,23 @@
 
 class Renderable {
 	public:
-		Renderable(Mesh* mesh, glm::mat4 m, glm::vec3 t, glm::vec3 r);
-
-		Mesh* mesh;
-		glm::mat4 modelWorld;
-
-		// temporary vector for movement representation
-		glm::vec3 translation;
+		Renderable(Mesh* mesh, GLenum mode, float d_x, float d_y, float d_z);
 		
-		// temporary vector for rotation axis
-		glm::vec3 rotation;
+		void Update(float dt);
+
+		// This function returns the current model-world matrix based on object's coordinates
+		glm::mat4 ModelWorld();
+		
+		Mesh* mesh;
+		GLenum drawingMode;
+		
+		// Diferencia de cada coordenada por unidad de tiempo
+		float dx;
+		float dy;
+		float dz;
+
+		// Coordenadas en tiempo real del objeto
+		float x;
+		float y;
+		float z;
 };

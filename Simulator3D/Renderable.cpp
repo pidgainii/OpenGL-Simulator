@@ -15,13 +15,37 @@
 
 #include "Renderable.h"
 
+#include <glm/gtc/matrix_transform.hpp>
 
 
-Renderable::Renderable(Mesh* m, glm::mat4 mat, glm::vec3 t, glm::vec3 r)
+
+Renderable::Renderable(Mesh* m, GLenum mode, float d_x, float d_y, float d_z)
 {
 	mesh = m;
-	modelWorld = mat;
 
-	translation = t;
-	rotation = r;
+	dx = d_x;
+	dy = d_y;
+	dz = d_z;
+
+	x = 0;
+	y = 0;
+	z = 0;
+
+	drawingMode = mode;
+}
+
+// This function will update coordinates with dt, (not t)
+void Renderable::Update(float dt)
+{
+	x += dx * dt;
+	y += dy * dt;
+	z += dz * dt;
+}
+
+glm::mat4 Renderable::ModelWorld()
+{
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(x, y, z));
+	// add scale if needed
+	return model;
 }

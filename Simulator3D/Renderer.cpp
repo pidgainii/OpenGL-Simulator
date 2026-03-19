@@ -32,7 +32,7 @@ void Renderer::Init()
 	gladLoadGL();
 
 	// TODO: make variables for width and height
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, 1400, 900);
 
 	// TODO: specify shaders in some other way
 	shaderProgram = ShaderProgram("default.vert", "default.frag");
@@ -60,11 +60,6 @@ void ActivateShaders(ShaderProgram shaderProgram)
 	shaderProgram.ActivateProgram();
 }
 
-void Renderer::setModelMatrix(glm::mat4 modelWorld)
-{
-	shaderProgram.setM(modelWorld);
-}
-
 void setCameraMatrix(ShaderProgram shaderProgram, glm::mat4 worldView, glm::mat4 viewProj)
 {
 	shaderProgram.setV(worldView);
@@ -78,13 +73,12 @@ void DrawElements(ShaderProgram shaderProgram, std::vector<Renderable> scene)
 	// also it should say to the shader programme to set the model matrix
 	for (Renderable r : scene)
 	{
-		shaderProgram.setM(r.modelWorld);
+		shaderProgram.setM(r.ModelWorld());
 		r.mesh->vao.Bind();
 
 		// the index count is how many indices to draw, mesh should know that
 		// also it should know the draw mode
-		glDrawElements(GL_TRIANGLES, r.mesh->indexCount, GL_UNSIGNED_INT, 0);
-		
+		glDrawElements(r.drawingMode, r.mesh->indexCount, GL_UNSIGNED_INT, 0);
 
 		// TODO: put this in another place
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
