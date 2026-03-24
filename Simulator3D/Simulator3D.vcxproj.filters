@@ -54,6 +54,9 @@
     <None Include="default.frag">
       <Filter>shaders</Filter>
     </None>
+    <None Include="airplane.obj">
+      <Filter>models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

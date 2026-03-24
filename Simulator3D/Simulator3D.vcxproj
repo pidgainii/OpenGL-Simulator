@@ -32,6 +32,9 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Simulation.cpp" />
+    <None Include="airplane.obj">
+      <FileType>Document</FileType>
+    </None>
     <ClCompile Include="VAO.cpp" />
     <ClCompile Include="VBO.cpp" />
   </ItemGroup>

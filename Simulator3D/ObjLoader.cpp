@@ -19,7 +19,7 @@
 #include <sstream>
 
 #include "ObjLoader.h"
-
+ /*
 bool loadOBJ(
     const std::string& path,
     std::vector<float>& outVertices,
@@ -59,5 +59,58 @@ bool loadOBJ(
             outIndices.push_back(c);
         }
     }
+    return true;
+}
+
+*/
+
+
+bool loadOBJ(
+    const std::string& path,
+    std::vector<float>& outVertices,
+    std::vector<unsigned int>& outIndices)
+{
+    std::ifstream file(path);
+    if (!file.is_open()) return false;
+
+    std::vector<float> tempPositions;
+    std::string line;
+
+    while (std::getline(file, line))
+    {
+        if (line.empty() || line[0] == '#') continue;
+
+        std::stringstream ss(line);
+        std::string type;
+        ss >> type;
+
+        if (type == "v")
+        {
+            float x, y, z;
+            ss >> x >> y >> z;
+
+            // Add position
+            tempPositions.push_back(x);
+            tempPositions.push_back(y);
+            tempPositions.push_back(z);
+
+            // Add DEFAULT color (white)
+            tempPositions.push_back(1.0f);
+            tempPositions.push_back(1.0f);
+            tempPositions.push_back(1.0f);
+            tempPositions.push_back(1.0f);
+        }
+        else if (type == "f")
+        {
+            unsigned int a, b, c;
+            ss >> a >> b >> c;
+
+            outIndices.push_back(a - 1);
+            outIndices.push_back(b - 1);
+            outIndices.push_back(c - 1);
+        }
+    }
+
+    outVertices = tempPositions;
     return true;
 }
