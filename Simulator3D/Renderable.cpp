@@ -19,33 +19,36 @@
 
 
 
-Renderable::Renderable(Mesh* m, GLenum mode, float d_x, float d_y, float d_z)
+Renderable::Renderable(Mesh* m, GLenum mode)
 {
 	mesh = m;
-
-	dx = d_x;
-	dy = d_y;
-	dz = d_z;
 
 	x = 0;
 	y = 0;
 	z = 0;
+	theta = 0;
 
 	drawingMode = mode;
 }
 
-// This function will update coordinates with dt, (not t)
-void Renderable::Update(float dt)
+void Renderable::SetCoords(float x, float y, float z, float theta)
 {
-	x += dx * dt;
-	y += dy * dt;
-	z += dz * dt;
+	this->x = x;
+	this->y = y;
+	this->z = z;
+	this->theta = theta;  // store theta for rotation
 }
 
 glm::mat4 Renderable::ModelWorld()
 {
 	glm::mat4 model = glm::mat4(1.0f);
+
+	// Translate first
 	model = glm::translate(model, glm::vec3(x, y, z));
-	// add scale if needed
+
+	// Rotate around vertical axis (y-axis in this example)
+	model = glm::rotate(model, theta, glm::vec3(0.0f, 1.0f, 0.0f));
+
+	// Add scaling here if needed
 	return model;
 }

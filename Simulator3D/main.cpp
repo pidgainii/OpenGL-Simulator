@@ -14,7 +14,7 @@
 
 
 
-
+#include "Engine.h"
 #include "Application.h"
 
 
@@ -23,8 +23,10 @@ const unsigned int SCR_HEIGHT = 600;
 
 int main()
 {
+	Engine engine;
+
 	Application app;
-	app.Run();
+	app.Run(engine);
 	return 0;
 }
 

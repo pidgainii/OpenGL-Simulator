@@ -20,8 +20,7 @@
 
 #include "Simulation.h"
 
-
-
+#include "../Simulator3D/Engine.h"
 
 
 
@@ -29,11 +28,11 @@ Simulation::Simulation() {}
 
 
 
-void Simulation::Update(float dt, std::vector<Renderable>& scene)
+void Simulation::Update(float dt, Engine& engine, std::vector<Renderable>& scene)
 {
-	// Updating movement for each object in scene
-	for (Renderable& r : scene)
-	{
-		r.Update(dt);
-	}
+	// We call Sim.Update(dt), which gives us a vector of 3 coordinates (for our plane)
+	std::vector<float> coordinates = engine.UpdateSim(dt);
+
+	scene.at(0).SetCoords(coordinates.at(0), coordinates.at(1), coordinates.at(2), coordinates.at(3));
+	
 }

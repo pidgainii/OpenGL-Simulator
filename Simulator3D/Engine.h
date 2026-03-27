@@ -12,42 +12,23 @@
  * limitations under the License.
  */
 
-
-#include "Renderer.h"
-#include "Loader.h"
-#include "Simulation.h"
-#include "Camera.h"
-
 #pragma once
 
 
-class Application {
+#include <vector>
+
+
+class Engine {
 public:
-	Application();
+	Engine();
 
-	void Run(Engine engine);
-	void Setup(Engine engine);
-	void Terminate();
-
-	GLFWwindow* window;
-
-	float time;
-
-	Engine engine;
-
-	Simulation sim;
-	Renderer renderer;
-	std::vector<Renderable> scene;
-	Camera camera;
-	Loader loader;
+	void Init();
+	std::vector<float> UpdateSim(float dt);
 
 
-
-	// temporary, until camera class is created
-	glm::mat4 worldView;
-	glm::mat4 viewProj;
-
+	// Coordenadas en tiempo real del objeto
+	float x;
+	float y;
+	float z;
+	float theta;
 };
-
-
-

@@ -32,24 +32,27 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     float x = static_cast<float>(xpos);
     float y = static_cast<float>(ypos);
 
-    if (firstMouse)
-    {
-        lastX = x;
-        lastY = y;
-        firstMouse = false;
-    }
-
-    float xoffset = x - lastX;
-    float yoffset = lastY - y;
-
-    // ALWAYS update last positions
-    lastX = x;
-    lastY = y;
-
-    // ONLY apply movement if left mouse is pressed
     if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
     {
+        if (firstMouse)
+        {
+            lastX = x;
+            lastY = y;
+            firstMouse = false;
+            return;
+        }
+
+        float xoffset = x - lastX;
+        float yoffset = lastY - y;
+
+        lastX = x;
+        lastY = y;
+
         app->camera.ProcessMouseMovement(xoffset, yoffset);
+    }
+    else
+    {
+        firstMouse = true;
     }
 }
 
@@ -76,11 +79,15 @@ void processInput(GLFWwindow* window)
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(FORWARD, 0.01);
+        app->camera.ProcessKeyboard(FORWARD, 0.02);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(BACKWARD, 0.01);
+        app->camera.ProcessKeyboard(BACKWARD, 0.02);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(LEFT, 0.01);
+        app->camera.ProcessKeyboard(LEFT, 0.02);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(RIGHT, 0.01);
+        app->camera.ProcessKeyboard(RIGHT, 0.02);
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        app->camera.ProcessKeyboard(DOWN, 0.02);
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        app->camera.ProcessKeyboard(UP, 0.02);
 }

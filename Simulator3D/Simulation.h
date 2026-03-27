@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-
+#include "Engine.h"
 #include "Renderer.h"
 
 
@@ -23,7 +23,7 @@ class Simulation {
 	public:
 		Simulation();
 
-		void Update(float time, std::vector<Renderable> &scene);
+        void Update(float time, Engine& engine, std::vector<Renderable>& scene);
 };
 
 

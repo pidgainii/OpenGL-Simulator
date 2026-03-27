@@ -18,6 +18,8 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "Engine.h"
+
 #include "Application.h"
 #include "Input.h"
 
@@ -29,6 +31,8 @@
 Application::Application()
 {
 	time = 0.0f;
+
+	// Engine is passed in Run method
 
 	sim = Simulation();
 	renderer = Renderer();
@@ -65,25 +69,29 @@ Application::Application()
 
 
 
-	// TEMPORARY UNTIL WE CREATE CAMERA
+	// TEMPORARY
 	worldView = glm::mat4(1.0f);
 	viewProj = glm::mat4(1.0f);
-	worldView = glm::translate(worldView, glm::vec3(0.0f, 0.1f, -10.0f));
-	worldView = glm::translate(worldView, glm::vec3(0.0f, -1.0f, 0.0f));
-	viewProj = glm::perspective(glm::radians(120.0f), 800.0f / 600.0f, 0.1f, 30.0f);
+	viewProj = glm::perspective(glm::radians(100.0f), 800.0f / 600.0f, 0.1f, 500.0f);
 
 
 
-	Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+
+	camera = Camera(
+		0.0f, 10.0f, 0.0f,   // position
+		0.0f, 1.0f, 0.0f,    // up vector
+		90.0f,              // yaw
+		-89.0f               // pitch (look straight down)
+	);
 	float lastX = 1400 / 2.0f;
 	float lastY = 900 / 2.0f;
 	bool firstMouse = true;
 }
 
 
-void Application::Run()
+void Application::Run(Engine engine)
 {
-	Setup();
+	Setup(engine);
 
 	// maybe some functions will be moved to a different class, not the renderer
 	while (!glfwWindowShouldClose(window))
@@ -100,7 +108,7 @@ void Application::Run()
 		processInput(window);
 
 
-		sim.Update(0.1, scene);
+		sim.Update(0.1, engine, scene);
 		renderer.Render(scene, camera.GetViewMatrix(), viewProj);
 
 		// TODO: maybe create window class to manage all of this glfw stuff
@@ -111,8 +119,10 @@ void Application::Run()
 }
 
 
-void Application::Setup()
+void Application::Setup(Engine engine)
 {
+	this->engine = engine;
+
 	renderer.Init();
 	loader.LoadScene(scene);
 }
