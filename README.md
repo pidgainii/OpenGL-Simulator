@@ -4,26 +4,26 @@ This repository contains a C++ OpenGL-based simulator designed for testing multi
 
 ---
 
-## 🚧 Current Progress
+## Current Progress
 
-- ✅ **Ackermann Vehicle Model** implemented
-- ✅ **Rendering System** working (plane displays correctly)
-- ✅ **Camera System** added:
+- **Ackermann Vehicle Model** implemented
+- **Rendering System** working (plane displays correctly)
+- **Camera System** added:
   - Movement controls:
     - `W / A / S / D` → Move
     - `Shift` → Move down
     - `Space` → Move up
-- ✅ **Ground Grid** visualization added
+- **Ground Grid** visualization added
 
 ---
 
-## 🎥 Demo
+## Demo
 
 ![Demo](media/demo.gif)
 
 ---
 
-## 📌 Notes
+## Notes
 
 - This project is still evolving; expect bugs and incomplete features.
 - Future updates will expand simulation capabilities and improve realism.
