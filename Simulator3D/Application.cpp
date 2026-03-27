@@ -78,7 +78,7 @@ Application::Application()
 
 
 	camera = Camera(
-		0.0f, 10.0f, 0.0f,   // position
+		0.0f, 3.0f, 0.0f,   // position
 		0.0f, 1.0f, 0.0f,    // up vector
 		90.0f,              // yaw
 		-89.0f               // pitch (look straight down)
