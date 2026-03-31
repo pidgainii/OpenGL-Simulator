@@ -1,9 +1,0 @@
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/glad.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/simulator.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/ZERO_CHECK.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glm-build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glm-build/glm/CMakeFiles/glm.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-build/src/CMakeFiles/glfw.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-build/src/CMakeFiles/update_mappings.dir

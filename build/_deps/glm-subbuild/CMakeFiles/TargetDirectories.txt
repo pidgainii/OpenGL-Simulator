@@ -1,3 +1,0 @@
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glm-subbuild/CMakeFiles/glm-populate.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glm-subbuild/CMakeFiles/ALL_BUILD.dir
-C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/_deps/glm-subbuild/CMakeFiles/ZERO_CHECK.dir
