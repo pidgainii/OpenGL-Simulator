@@ -13,7 +13,7 @@
  */
 
 
-#include "EBO.h"
+#include "simulator/graphics/EBO.h"
 
 
 EBO::EBO()

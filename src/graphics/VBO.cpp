@@ -13,7 +13,7 @@
  */
 
 
-#include "VBO.h"
+#include "simulator/graphics/VBO.h"
 
 
 

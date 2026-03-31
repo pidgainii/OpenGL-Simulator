@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/a2f7284417780dd6e253479fd46ec271/glfw-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/155171fbe0f1bafaffcc730b5c2d1fb6/glfw-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-subbuild/CMakeFiles/eb6fd9cc5880b2806aad8cc9a7474157/glfw-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"glfw-populate"
+		],
+		"name" : "glfw-populate"
+	}
+}

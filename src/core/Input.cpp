@@ -14,9 +14,9 @@
 
 
 
-#include "Input.h"
-#include "Application.h"
-#include "Camera.h"
+#include "simulator/core/Input.h"
+#include "simulator/core/Application.h"
+#include "simulator/scene/Camera.h"
 
 
 

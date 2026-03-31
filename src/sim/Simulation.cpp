@@ -18,9 +18,9 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Simulation.h"
+#include "simulator/sim/Simulation.h"
 
-#include "../Simulator3D/Engine.h"
+#include "simulator/core/Engine.h"
 
 
 

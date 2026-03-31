@@ -13,7 +13,7 @@
  */
 
 
-#include "Renderable.h"
+#include "simulator/scene/Renderable.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 

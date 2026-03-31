@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/cmake_install.cmake",
+		"C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-build/cmake_install.cmake",
+		"C:/Users/Usuario/Desktop/Programaci\u00f3n/TFG/Simulador/OpenGL-Simulator/build/_deps/glfw-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

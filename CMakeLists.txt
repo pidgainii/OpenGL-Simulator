@@ -61,10 +61,25 @@ target_compile_definitions(glad PUBLIC GLAD_GL_IMPLEMENTATION)
 # Your executable
 # -----------------------------
 add_executable(simulator
-  src/main.cpp
-  # Add your .cpp files here as you move them into src/
-  # src/core/Application.cpp
-  # src/graphics/Renderer.cpp
+  src/app/main.cpp
+
+  src/core/Application.cpp
+  src/core/Engine.cpp
+  src/core/Input.cpp
+
+  src/graphics/EBO.cpp
+  src/graphics/Renderer.cpp
+  src/graphics/ShaderProgram.cpp
+  src/graphics/VAO.cpp
+  src/graphics/VBO.cpp
+
+  src/io/Loader.cpp
+  src/io/ObjLoader.cpp
+
+  src/scene/Mesh.cpp
+  src/scene/Renderable.cpp
+
+  src/sim/Simulation.cpp
 )
 
 # Your public headers

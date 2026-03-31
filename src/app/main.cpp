@@ -14,8 +14,8 @@
 
 
 
-#include "Engine.h"
-#include "Application.h"
+#include "simulator/core/Engine.h"
+#include "simulator/core/Application.h"
 
 
 const unsigned int SCR_WIDTH = 800;

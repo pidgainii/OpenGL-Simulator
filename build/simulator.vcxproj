@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8105D485-D62B-396A-AF45-090445AEE58C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>simulator</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">simulator.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">simulator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">simulator.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">simulator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">simulator.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">simulator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">simulator.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">simulator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying assets to output folder</Message>
+      <Command>setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -E copy_directory C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/assets C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/Debug/assets
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\glfw3.lib;lib\Debug\glad.lib;opengl32.lib;gdi32.lib;user32.lib;shell32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/lib/Debug/simulator.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/Debug/simulator.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying assets to output folder</Message>
+      <Command>setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -E copy_directory C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/assets C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/Release/assets
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Release\glfw3.lib;lib\Release\glad.lib;opengl32.lib;gdi32.lib;user32.lib;shell32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/lib/Release/simulator.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/Release/simulator.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying assets to output folder</Message>
+      <Command>setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -E copy_directory C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/assets C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/MinSizeRel/assets
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\MinSizeRel\glfw3.lib;lib\MinSizeRel\glad.lib;opengl32.lib;gdi32.lib;user32.lib;shell32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/lib/MinSizeRel/simulator.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/MinSizeRel/simulator.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLAD_GL_IMPLEMENTATION;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glm;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\stb;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-src\include;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\external\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Copying assets to output folder</Message>
+      <Command>setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -E copy_directory C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/assets C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/RelWithDebInfo/assets
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\RelWithDebInfo\glfw3.lib;lib\RelWithDebInfo\glad.lib;opengl32.lib;gdi32.lib;user32.lib;shell32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/lib/RelWithDebInfo/simulator.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/bin/RelWithDebInfo/simulator.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -SC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator -BC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build --check-stamp-file C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindGit.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindOpenGL.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -SC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator -BC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build --check-stamp-file C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindGit.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindOpenGL.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -SC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator -BC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build --check-stamp-file C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindGit.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindOpenGL.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe -SC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator -BC:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build --check-stamp-file C:/Users/Usuario/Desktop/Programación/TFG/Simulador/OpenGL-Simulator/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindGit.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindOpenGL.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\Usuario\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeCXXCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeRCCompiler.cmake;C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\4.3.0\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\app\main.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\core\Application.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\core\Engine.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\core\Input.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\graphics\EBO.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\graphics\Renderer.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\graphics\ShaderProgram.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\graphics\VAO.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\graphics\VBO.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\io\Loader.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\io\ObjLoader.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\scene\Mesh.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\scene\Renderable.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\src\sim\Simulation.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\ZERO_CHECK.vcxproj">
+      <Project>{67B5783E-3688-33FC-BC09-750F1B5D7C16}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\glad.vcxproj">
+      <Project>{61F25318-F865-3969-AFF3-C0CE06998AD4}</Project>
+      <Name>glad</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Usuario\Desktop\Programación\TFG\Simulador\OpenGL-Simulator\build\_deps\glfw-build\src\glfw.vcxproj">
+      <Project>{E4E2BEDF-D113-3CFE-9005-2576CF4183B6}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -18,7 +18,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "ObjLoader.h"
+#include "simulator/io/ObjLoader.h"
  /*
 bool loadOBJ(
     const std::string& path,
