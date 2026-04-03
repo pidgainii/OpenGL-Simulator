@@ -4,6 +4,13 @@ This repository contains a C++ OpenGL-based simulator designed for testing multi
 
 ---
 
+## Run App
+
+Click `run.bat`
+
+
+---
+
 ## Current Progress
 
 - **Ackermann Vehicle Model** implemented
