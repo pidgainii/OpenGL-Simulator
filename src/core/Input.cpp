@@ -67,8 +67,19 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
     app->camera.ProcessMouseScroll(y);
 }
 
+
+
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
+float getDt(GLFWwindow* window, Application* app)
+{
+    // should delta time be passed in input????
+    float element = 0.02;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_RIGHT_CONTROL) == GLFW_PRESS)
+        element *= 3;
+    return element;
+}
+
 void processInput(GLFWwindow* window)
 {
     Application* app =
@@ -79,15 +90,16 @@ void processInput(GLFWwindow* window)
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(FORWARD, 0.02);
+        app->camera.ProcessKeyboard(FORWARD, getDt(window, app));
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(BACKWARD, 0.02);
+        app->camera.ProcessKeyboard(BACKWARD, getDt(window, app));
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(LEFT, 0.02);
+        app->camera.ProcessKeyboard(LEFT, getDt(window, app));
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(RIGHT, 0.02);
+        app->camera.ProcessKeyboard(RIGHT, getDt(window, app));
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(DOWN, 0.02);
+        app->camera.ProcessKeyboard(DOWN, getDt(window, app));
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        app->camera.ProcessKeyboard(UP, 0.02);
+        app->camera.ProcessKeyboard(UP, getDt(window, app));
 }
+

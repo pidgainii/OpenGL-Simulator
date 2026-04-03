@@ -38,7 +38,6 @@ Application::Application()
 	sim = Simulation();
 	renderer = Renderer();
 	loader = Loader();
-	//camera = Camera();
 
 
 	glfwInit();
@@ -126,11 +125,6 @@ void Application::Setup(Engine engine)
 
 	renderer.Init();
 	loader.LoadScene(scene);
-
-	std::cout << "Scene objects: " << scene.size() << "\n";
-	for (auto& r : scene) {
-		std::cout << "indexCount=" << r.mesh->indexCount << "\n";
-	}
 }
 
 
