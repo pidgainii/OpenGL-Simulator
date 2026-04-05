@@ -14,9 +14,10 @@
 
 #pragma once
 
-
+#include <memory>
 #include <vector>
-
+#include "simulator/sim/agent/IAgent.h"
+#include "simulator/sim/common/Pos.h"
 
 class Engine {
 public:
@@ -31,4 +32,7 @@ public:
 	float y;
 	float z;
 	float theta;
+
+private:
+	std::unique_ptr<IAgent> agent; //añadimos un único agente
 };

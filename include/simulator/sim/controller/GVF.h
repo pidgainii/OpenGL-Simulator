@@ -1,5 +1,5 @@
 #pragma once
-#include "Trajectory.h"
+#include "simulator/sim/trajectory/ITrajectory.h"
 #include <cmath>
 
 class GVF {
@@ -7,7 +7,7 @@ class GVF {
 public:
 	GVF(float gain = 0.2f) : k(gain) {};
 
-	float gvf(const Vec2& p, const Trajectory& path) const {
+	float desiredHeading(const Vec2& p, const ITrajectory& path) const {
 		
 		// Tangente
 		Vec2 g = path.gradPhi(p);

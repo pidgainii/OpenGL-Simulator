@@ -1,4 +1,3 @@
-
 #pragma once
 
 struct Vec2 {
@@ -6,9 +5,9 @@ struct Vec2 {
 	float y = 0;
 };
 
-class Trajectory {
+class ITrajectory {
 public:
-	virtual ~Trajectory() = default;
+	virtual ~ITrajectory() = default;
 
 	virtual float phi(const Vec2& p) const = 0;
 	virtual Vec2 gradPhi(const Vec2& p) const = 0;

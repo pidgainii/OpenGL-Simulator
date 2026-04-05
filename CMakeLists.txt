@@ -87,6 +87,11 @@ add_executable(simulator
   src/scene/Renderable.cpp
 
   src/sim/Simulation.cpp
+
+  src/sim/agent/AckermannAgent.cpp
+  src/sim/model/ackermann/AckermannController.cpp
+  src/sim/model/ackermann/AckermannModel.cpp
+
 )
 
 # Your public headers
