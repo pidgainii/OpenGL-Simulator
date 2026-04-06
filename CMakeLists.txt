@@ -92,6 +92,10 @@ add_executable(simulator
   src/sim/model/ackermann/AckermannController.cpp
   src/sim/model/ackermann/AckermannModel.cpp
 
+  src/sim/agent/UnicycleAgent.cpp
+  src/sim/model/unicycle/UnicycleController.cpp
+  src/sim/model/unicycle/UnicycleModel.cpp
+
 )
 
 # Your public headers

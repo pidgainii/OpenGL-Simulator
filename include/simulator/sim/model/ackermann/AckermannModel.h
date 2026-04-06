@@ -1,6 +1,6 @@
 #pragma once
 
-#include "simulator/sim/model/ackermann/AckermannState.h"
+#include "AckermannState.h"
 #include <cmath>
 
 class AckermannModel {
