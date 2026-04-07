@@ -96,6 +96,10 @@ add_executable(simulator
   src/sim/model/unicycle/UnicycleController.cpp
   src/sim/model/unicycle/UnicycleModel.cpp
 
+   src/sim/agent/HolonomicAgent.cpp
+  src/sim/model/holonomic/HolonomicController.cpp
+  src/sim/model/holonomic/HolonomicModel.cpp
+
 )
 
 # Your public headers
