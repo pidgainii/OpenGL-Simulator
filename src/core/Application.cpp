@@ -10,7 +10,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ */	
 
 
 
@@ -89,7 +89,7 @@ Application::Application()
 }
 
 
-void Application::Run(Engine engine)
+void Application::Run(Engine& engine)
 {
 	Setup(engine);
 
@@ -119,10 +119,8 @@ void Application::Run(Engine engine)
 }
 
 
-void Application::Setup(Engine engine)
+void Application::Setup(Engine& engine)
 {
-	this->engine = engine;
-
 	renderer.Init();
 	loader.LoadScene(scene);
 }

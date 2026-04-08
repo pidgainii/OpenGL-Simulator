@@ -30,8 +30,8 @@ class Application {
 public:
     Application();
 
-    void Run(Engine engine);
-    void Setup(Engine engine);
+    void Run(Engine& engine);
+    void Setup(Engine& engine);
     void Terminate();
 
     GLFWwindow* window = nullptr;

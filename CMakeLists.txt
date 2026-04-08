@@ -87,6 +87,19 @@ add_executable(simulator
   src/scene/Renderable.cpp
 
   src/sim/Simulation.cpp
+
+  src/sim/agent/AckermannAgent.cpp
+  src/sim/model/ackermann/AckermannController.cpp
+  src/sim/model/ackermann/AckermannModel.cpp
+
+  src/sim/agent/UnicycleAgent.cpp
+  src/sim/model/unicycle/UnicycleController.cpp
+  src/sim/model/unicycle/UnicycleModel.cpp
+
+   src/sim/agent/HolonomicAgent.cpp
+  src/sim/model/holonomic/HolonomicController.cpp
+  src/sim/model/holonomic/HolonomicModel.cpp
+
 )
 
 # Your public headers
