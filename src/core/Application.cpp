@@ -26,18 +26,22 @@
 
 #include <iostream>
 
+#include "imgui.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
+
 
 
 
 Application::Application()
+	: sim(),
+      renderer(),
+      loader(),
+      config(),
+      ui(&sim, &config)
 {
 	time = 0.0f;
 
-	// Engine is passed in Run method
-
-	sim = Simulation();
-	renderer = Renderer();
-	loader = Loader();
 
 
 	glfwInit();
@@ -54,12 +58,20 @@ Application::Application()
 	}
 	glfwMakeContextCurrent(window);
 
+	// ---------- IMGUI -----------
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+
+	ImGuiIO& io = ImGui::GetIO();
+	ImGui::StyleColorsDark();
+
+	// Initialize backends
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
+	// -----------------------------
 
 	// We give glfw pointer to this Application instance
 	glfwSetWindowUserPointer(window, this);
-
-	glfwSetCursorPosCallback(window, mouse_callback);
-	glfwSetScrollCallback(window, scroll_callback);
 
 
 
@@ -93,9 +105,50 @@ void Application::Run(Engine& engine)
 {
 	Setup(engine);
 
+	// --------------------------- TEMPORARY -------------------------------
+	float lastX = 0.0f;
+	float lastY = 0.0f;
+	bool firstMouse = true;
+
 	// maybe some functions will be moved to a different class, not the renderer
 	while (!glfwWindowShouldClose(window))
 	{
+		// ----------- IMGUI: Before rendering -> 1. Start ImGui frame -----------
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		ui.Render();
+
+		ImGuiIO& io = ImGui::GetIO();
+
+		// Get mouse position every frame
+		double xpos, ypos;
+		glfwGetCursorPos(window, &xpos, &ypos);
+
+		if (!io.WantCaptureMouse && glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+		{
+			if (firstMouse)
+			{
+				lastX = (float)xpos;
+				lastY = (float)ypos;
+				firstMouse = false;
+			}
+
+			float xoffset = (float)xpos - lastX;
+			float yoffset = lastY - (float)ypos;
+
+			lastX = (float)xpos;
+			lastY = (float)ypos;
+
+			camera.ProcessMouseMovement(xoffset, yoffset);
+		}
+		else
+		{
+			firstMouse = true;
+		}
+		// -----------------------------------------------------------------------
+
 		// Maybe i should move this somewhere else
 		// Real dt calculations
 		static double lastTime = glfwGetTime();
@@ -105,11 +158,19 @@ void Application::Run(Engine& engine)
 		time += dt;
 
 
-		processInput(window);
-
+		// Only process camera/simulator input if ImGui isn't using the mouse
+		if (!ImGui::GetIO().WantCaptureMouse) {
+			processInput(window);
+		}
 
 		sim.Update(0.1, engine, scene);
 		renderer.Render(scene, camera.GetViewMatrix(), viewProj);
+
+
+		// --------------- IMGUI -----------------------
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		// ---------------------------------------------
 
 		// TODO: maybe create window class to manage all of this glfw stuff
 		glfwSwapBuffers(window);
