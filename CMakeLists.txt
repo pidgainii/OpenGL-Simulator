@@ -57,7 +57,8 @@ find_package(OpenGL REQUIRED)
 # GLAD (from your repo)
 # -----------------------------
 add_library(glad STATIC
-  external/glad/src/glad.c)
+  external/glad/src/glad.c
+)
 target_include_directories(glad PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/external/glad/include
 )
@@ -124,7 +125,9 @@ add_executable(simulator
   src/sim/model/holonomic/HolonomicModel.cpp
 
  src/ui/UI.cpp
- include/simulator/ui/UI.h)
+ src/graphics/WindowManager.cpp
+ src/view/CameraManager.cpp
+)
 
 # Your public headers
 target_include_directories(simulator PRIVATE

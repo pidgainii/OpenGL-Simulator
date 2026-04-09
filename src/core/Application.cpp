@@ -24,6 +24,8 @@
 #include "simulator/core/Application.h"
 #include "simulator/core/Input.h"
 
+#include "simulator/graphics/WindowManager.h"
+
 #include <iostream>
 
 #include "imgui.h"
@@ -40,23 +42,10 @@ Application::Application()
       config(),
       ui(&sim, &config)
 {
-	time = 0.0f;
-
-
-
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	// TODO: make variables for width and height
-	window = glfwCreateWindow(1400, 900, "LearnOpenGL", NULL, NULL);
-	if (window == NULL)
-	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-	}
-	glfwMakeContextCurrent(window);
+	// TODO: Make width and heigh configurable in a different place
+	window = CreateWindow(1400, 900, "Simulation");
+	// We give glfw pointer to this Application instance
+	glfwSetWindowUserPointer(window, this);
 
 	// ---------- IMGUI -----------
 	IMGUI_CHECKVERSION();
@@ -69,15 +58,6 @@ Application::Application()
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 	// -----------------------------
-
-	// We give glfw pointer to this Application instance
-	glfwSetWindowUserPointer(window, this);
-
-
-
-	// Smoother rendering
-	glfwSwapInterval(1);
-
 
 
 
@@ -95,9 +75,6 @@ Application::Application()
 		90.0f,              // yaw
 		-89.0f               // pitch (look straight down)
 	);
-	float lastX = 1400 / 2.0f;
-	float lastY = 900 / 2.0f;
-	bool firstMouse = true;
 }
 
 
