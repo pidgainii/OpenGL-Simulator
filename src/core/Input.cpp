@@ -16,56 +16,7 @@
 
 #include "simulator/core/Input.h"
 #include "simulator/core/Application.h"
-#include "simulator/scene/Camera.h"
-
-
-
-static float lastX = 0.0f;
-static float lastY = 0.0f;
-static bool firstMouse = true;
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos)
-{
-    Application* app =
-        static_cast<Application*>(glfwGetWindowUserPointer(window));
-
-    float x = static_cast<float>(xpos);
-    float y = static_cast<float>(ypos);
-
-    if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-    {
-        if (firstMouse)
-        {
-            lastX = x;
-            lastY = y;
-            firstMouse = false;
-            return;
-        }
-
-        float xoffset = x - lastX;
-        float yoffset = lastY - y;
-
-        lastX = x;
-        lastY = y;
-
-        app->camera.ProcessMouseMovement(xoffset, yoffset);
-    }
-    else
-    {
-        firstMouse = true;
-    }
-}
-
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
-    // We take the Application instance that glfw has access to
-    Application* app =
-        static_cast<Application*>(glfwGetWindowUserPointer(window));
-
-    float y = static_cast<float>(yoffset);
-
-    app->camera.ProcessMouseScroll(y);
-}
+#include "simulator/cam/Camera.h"
 
 
 
@@ -82,6 +33,10 @@ float getDt(GLFWwindow* window, Application* app)
 
 void processInput(GLFWwindow* window)
 {
+    ImGuiIO& io = ImGui::GetIO();
+    if (io.WantCaptureKeyboard)
+        return; // ImGui is typing, ignore keyboard for camera
+
     Application* app =
         static_cast<Application*>(glfwGetWindowUserPointer(window));
 

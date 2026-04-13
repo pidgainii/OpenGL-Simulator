@@ -65,6 +65,30 @@ target_include_directories(glad PUBLIC
 target_compile_definitions(glad PUBLIC GLAD_GL_IMPLEMENTATION)
 
 # -----------------------------
+# Dear ImGui
+# -----------------------------
+add_library(imgui
+  external/imgui/imgui.cpp
+  external/imgui/imgui_draw.cpp
+  external/imgui/imgui_widgets.cpp
+  external/imgui/imgui_tables.cpp
+
+  external/imgui/backends/imgui_impl_glfw.cpp
+  external/imgui/backends/imgui_impl_opengl3.cpp
+)
+
+target_include_directories(imgui PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui
+  ${CMAKE_CURRENT_SOURCE_DIR}/external/imgui/backends
+)
+
+target_link_libraries(imgui PUBLIC
+  glfw
+  OpenGL::GL
+)
+
+
+# -----------------------------
 # Your executable
 # -----------------------------
 add_executable(simulator
@@ -100,6 +124,8 @@ add_executable(simulator
   src/sim/model/holonomic/HolonomicController.cpp
   src/sim/model/holonomic/HolonomicModel.cpp
 
+    src/ui/UI.cpp
+    src/graphics/WindowManager.cpp
 )
 
 # Your public headers
@@ -112,6 +138,7 @@ target_link_libraries(simulator PRIVATE
   glad
   glm::glm
   OpenGL::GL
+  imgui
 )
 
 # On Windows, GLFW needs some system libs depending on toolchain

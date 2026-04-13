@@ -23,8 +23,9 @@
 #include "simulator/graphics/Renderer.h"
 #include "simulator/io/Loader.h"
 #include "simulator/sim/Simulation.h"
-#include "simulator/scene/Camera.h"
-#include "simulator/scene/Renderable.h" // if you store std::vector<Renderable>
+#include "simulator/cam/Camera.h"
+#include "simulator/scene/Renderable.h"
+#include "simulator/ui/UI.h"
 
 class Application {
 public:
@@ -43,9 +44,10 @@ public:
     Simulation sim;
     Renderer renderer;
     std::vector<Renderable> scene;
-    Camera camera;
+    
     Loader loader;
+    SimulationConfig config;
+    UI ui;
 
-    glm::mat4 worldView{};
-    glm::mat4 viewProj{};
+    Camera camera;
 };
