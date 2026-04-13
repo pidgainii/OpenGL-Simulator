@@ -68,6 +68,10 @@ Application::Application()
 		90.0f,              // yaw
 		-89.0f               // pitch (look straight down)
 	);
+
+	lastX = 0.0f;
+	lastY = 0.0f;
+	firstMouse = true;
 }
 
 
@@ -76,9 +80,7 @@ void Application::Run(Engine& engine)
 	Setup(engine);
 
 	// --------------------------- TEMPORARY -------------------------------
-	float lastX = 0.0f;
-	float lastY = 0.0f;
-	bool firstMouse = true;
+	
 
 	// maybe some functions will be moved to a different class, not the renderer
 	while (!glfwWindowShouldClose(window))
