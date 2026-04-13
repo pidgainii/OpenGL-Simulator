@@ -62,13 +62,6 @@ Application::Application()
 
 
 	// TEMPORARY
-	worldView = glm::mat4(1.0f);
-	viewProj = glm::mat4(1.0f);
-	viewProj = glm::perspective(glm::radians(100.0f), 800.0f / 600.0f, 0.1f, 500.0f);
-
-
-
-
 	camera = Camera(
 		0.0f, 3.0f, 0.0f,   // position
 		0.0f, 1.0f, 0.0f,    // up vector
@@ -140,8 +133,8 @@ void Application::Run(Engine& engine)
 			processInput(window);
 		}
 
-		sim.Update(0.1, engine, scene);
-		renderer.Render(scene, camera.GetViewMatrix(), viewProj);
+		sim.Update(dt, engine, scene);
+		renderer.Render(scene, camera.GetViewMatrix(), camera.GetProjectionMatrix());
 
 
 		// --------------- IMGUI -----------------------
@@ -149,7 +142,7 @@ void Application::Run(Engine& engine)
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		// ---------------------------------------------
 
-		// TODO: maybe create window class to manage all of this glfw stuff
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -169,14 +162,16 @@ void Application::Terminate()
 	// we should clean every mesh here
 	// TODO: CLEAN MESH OR RENDERABLE OBJECTS
 
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
+
+
 	// tell renderer to clear resources
 	glfwTerminate();
+	glfwDestroyWindow(window);
 	renderer.Clean();
 }
-
-
-
-
-
 
 

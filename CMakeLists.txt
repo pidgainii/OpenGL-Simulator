@@ -124,9 +124,8 @@ add_executable(simulator
   src/sim/model/holonomic/HolonomicController.cpp
   src/sim/model/holonomic/HolonomicModel.cpp
 
- src/ui/UI.cpp
- src/graphics/WindowManager.cpp
- src/view/CameraManager.cpp
+    src/ui/UI.cpp
+    src/graphics/WindowManager.cpp
 )
 
 # Your public headers

@@ -16,7 +16,7 @@
 
 #include "simulator/core/Input.h"
 #include "simulator/core/Application.h"
-#include "simulator/scene/Camera.h"
+#include "simulator/cam/Camera.h"
 
 
 
