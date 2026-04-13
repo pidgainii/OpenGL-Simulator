@@ -50,4 +50,9 @@ public:
     UI ui;
 
     Camera camera;
+
+private:
+    float lastX;
+    float lastY;
+    bool firstMouse;
 };
