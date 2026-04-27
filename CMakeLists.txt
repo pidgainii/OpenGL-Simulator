@@ -109,6 +109,7 @@ add_executable(simulator
 
   src/scene/Mesh.cpp
   src/scene/Renderable.cpp
+  src/scene/Scene.cpp
 
   src/sim/Simulation.cpp
 

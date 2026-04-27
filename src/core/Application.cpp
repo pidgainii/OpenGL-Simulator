@@ -39,8 +39,9 @@ Application::Application()
 	: sim(),
       renderer(),
       loader(),
-      config(),
-      ui(&sim, &config)
+      ui(&sim),
+	  isSimulating(true),
+	selectedEngineIndex(0)
 {
 	// TODO: Make width and heigh configurable in a different place
 	window = CreateWindow(1400, 900, "Simulation");
@@ -61,6 +62,13 @@ Application::Application()
 
 
 
+
+	// RENDERER
+	renderer.Init();
+
+
+
+
 	// TEMPORARY
 	camera = Camera(
 		0.0f, 3.0f, 0.0f,   // position
@@ -72,13 +80,26 @@ Application::Application()
 	lastX = 0.0f;
 	lastY = 0.0f;
 	firstMouse = true;
+
+
+	// ENGINES AND SCENES
+	engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic));
+	engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann));
+	engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle));
+	
+	//scenes.push_back(std::make_unique<Scene>());
+	//scenes.push_back(std::make_unique<Scene>());
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(1)));
+
+
+	// 2. Apuntar a los activos por defecto (el primero de la lista)
+	if (!engines.empty()) activeEngine = engines[0].get();
+	if (!scenes.empty())  activeScene = scenes[0].get();
 }
 
 
-void Application::Run(Engine& engine)
+void Application::Run()
 {
-	Setup(engine);
-
 	// --------------------------- TEMPORARY -------------------------------
 	
 
@@ -90,7 +111,7 @@ void Application::Run(Engine& engine)
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		ui.Render();
+		ui.Render(selectedEngineIndex, isSimulating, engines);
 
 		ImGuiIO& io = ImGui::GetIO();
 
@@ -135,9 +156,13 @@ void Application::Run(Engine& engine)
 			processInput(window);
 		}
 
-		sim.Update(dt, engine, scene);
-		renderer.Render(scene, camera.GetViewMatrix(), camera.GetProjectionMatrix());
-
+		if (isSimulating && activeEngine && activeScene) {
+			sim.Update(dt, *activeEngine, activeScene->scene);
+		}
+		if (activeScene)
+		{
+			renderer.Render(activeScene->scene, camera.GetViewMatrix(), camera.GetProjectionMatrix());
+		}
 
 		// --------------- IMGUI -----------------------
 		ImGui::Render();
@@ -152,11 +177,7 @@ void Application::Run(Engine& engine)
 }
 
 
-void Application::Setup(Engine& engine)
-{
-	renderer.Init();
-	loader.LoadScene(scene);
-}
+
 
 
 void Application::Terminate()
@@ -177,3 +198,7 @@ void Application::Terminate()
 }
 
 
+void Application::TogglePause()
+{
+	isSimulating = !isSimulating;
+}

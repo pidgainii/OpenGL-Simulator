@@ -16,10 +16,15 @@
 #include "simulator/io/Loader.h"
 #include "simulator/io/ObjLoader.h"
 
+#include "simulator/scene/Scene.h"
+
 Loader::Loader() {}
 
-void Loader::LoadScene(std::vector<Renderable>& scene)
+Scene Loader::LoadScene(int nAgents)
 {
+    std::vector<Renderable> scene;
+
+    
     // -------- AIRPLANE --------
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
@@ -31,11 +36,16 @@ void Loader::LoadScene(std::vector<Renderable>& scene)
 
     // -------- RENDERABLES --------
     Renderable plane = Renderable(planeMesh, GL_TRIANGLES);
-    Renderable plane2 = Renderable(planeMesh, GL_TRIANGLES);
 
-    // -------- SCENE --------
-    scene.push_back(plane);
 
+
+    // TODO: For now we are just adding nAgents number of planes with same coordinates
+    // We will need to be able to ask Engine for their initial coordinates I guess
+    // Or will they update on the first Update() call?
+    for (int i = 0; i < nAgents; i++) {
+        // -------- SCENE --------
+        scene.push_back(plane);
+    }
 
 
     // -------- GRID ---------
@@ -81,4 +91,12 @@ void Loader::LoadScene(std::vector<Renderable>& scene)
     Renderable grid = Renderable(gridMesh, GL_TRIANGLES);
     grid.SetCoords(0.0f, 0.0f, 0.0f, 0.0f); // **at origin**
     scene.push_back(grid);
+
+
+
+
+
+    Scene myScene(scene);
+
+    return myScene;
 }

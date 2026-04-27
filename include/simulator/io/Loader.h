@@ -16,6 +16,7 @@
 
 
 #include "simulator/scene/Renderable.h"
+#include "simulator/scene/Scene.h"
 
 #include <vector>
 
@@ -23,5 +24,5 @@
 class Loader {
 public:
 	Loader();
-	void LoadScene(std::vector<Renderable>& scene);
+	Scene LoadScene(int nAgents);
 };

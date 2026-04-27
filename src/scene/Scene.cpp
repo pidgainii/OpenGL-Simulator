@@ -12,39 +12,12 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include <memory>
-#include <vector>
-#include <string>
-#include "simulator/sim/agent/IAgent.h"
-#include "simulator/sim/common/Pos.h"
 
 
+#include "simulator/scene/Scene.h"
 
-enum class SimulationType {
-	Holonomic,
-	Ackermann,
-	Unicycle
-};
+Scene::Scene() {}
 
-
-class Engine {
-public:
-    Engine(SimulationType type);
-
-    void Init();
-    std::vector<float> UpdateSim(float dt);
-
-    float x;
-    float y;
-    float z;
-    float theta;
-
-    std::string getName() const;
-
-private:
-    std::unique_ptr<IAgent> agent;
-    SimulationType simType;
-    std::string name;
-};
+Scene::Scene(const std::vector<Renderable>& scene)
+    : scene(scene) {
+}

@@ -25,31 +25,39 @@
 #include "simulator/sim/Simulation.h"
 #include "simulator/cam/Camera.h"
 #include "simulator/scene/Renderable.h"
+#include "simulator/scene/Scene.h"
 #include "simulator/ui/UI.h"
 
 class Application {
 public:
     Application();
 
-    void Run(Engine& engine);
-    void Setup(Engine& engine);
+    void Run();
     void Terminate();
+    void TogglePause();
 
     GLFWwindow* window = nullptr;
 
     float time = 0.0f;
 
-    Engine engine;
-
     Simulation sim;
     Renderer renderer;
-    std::vector<Renderable> scene;
     
     Loader loader;
-    SimulationConfig config;
     UI ui;
 
     Camera camera;
+
+
+    // En Application.h
+    std::vector<std::unique_ptr<Engine>> engines;
+    Engine* activeEngine = nullptr;
+    
+    std::vector<std::unique_ptr<Scene>> scenes;
+    Scene* activeScene = nullptr;
+    
+    bool isSimulating = false;
+    int selectedEngineIndex = 0;
 
 private:
     float lastX;

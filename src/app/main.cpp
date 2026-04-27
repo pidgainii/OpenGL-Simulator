@@ -23,10 +23,8 @@ const unsigned int SCR_HEIGHT = 600;
 
 int main()
 {
-	Engine engine;
-
 	Application app;
-	app.Run(engine);
+	app.Run();
 	return 0;
 }
 
