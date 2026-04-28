@@ -1,4 +1,3 @@
-// UI.h
 #pragma once
 #include <vector>
 #include <memory>
@@ -6,13 +5,12 @@
 
 // Forward declarations
 class Simulation;
-struct SimulationConfig;
 
 class UI {
 public:
     UI(Simulation* sim);
 
-    // Ahora recibe referencias de Application
+    // Main render loop
     void Render(int& selectedIdx, bool& isSimulating, const std::vector<std::unique_ptr<Engine>>& engines);
 
 private:
@@ -20,4 +18,9 @@ private:
     void RenderSimulationPanel(bool isSimulating);
 
     Simulation* simulation;
+
+    // --- NEW STATE VARIABLE ---
+    // Tracks if we are showing the large configuration menu 
+    // or the tiny "contracted" pause button.
+    bool showFullMenu;
 };

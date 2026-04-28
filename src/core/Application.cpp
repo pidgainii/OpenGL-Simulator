@@ -40,7 +40,7 @@ Application::Application()
       renderer(),
       loader(),
       ui(&sim),
-	  isSimulating(true),
+	  isSimulating(false),
 	selectedEngineIndex(0)
 {
 	// TODO: Make width and heigh configurable in a different place
