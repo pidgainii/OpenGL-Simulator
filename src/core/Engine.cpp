@@ -36,8 +36,8 @@ void Engine::Init(int numAgents, const std::vector<InitialState>& initialStates)
         case SimulationType::Holonomic:
             agents.push_back(std::make_unique<HolonomicAgent>(
                 HolonomicState{ Vec2{ startX, startY } },
-                std::unique_ptr<ITrajectory>(new CircleTrajectory(10.0f)),
-                0.1f
+                std::unique_ptr<ITrajectory>(new CircleTrajectory(20.0f)),
+                0.01f
             ));
             break;
 

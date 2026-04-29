@@ -145,7 +145,7 @@ void Application::Run()
 		}
 
 		if (isSimulating && activeEngine && activeScene) {
-			sim.Update(dt, *activeEngine, activeScene->scene);
+			sim.Update(0.07, *activeEngine, activeScene->scene);
 		}
 		if (activeScene)
 		{
@@ -168,17 +168,22 @@ void Application::Run()
 void Application::InitEnginesScenes() {
 	
 	std::vector<InitialState> starts = {
-		{0.0f, 0.0f, 0.0f}, // Agent 0
+		{0.1f, -5.0f, 0.0f}, // Agent 0
 		{5.0f, 2.0f, 1.5f}, // Agent 1
+		{14.0f, 7.0f, 1.5f}, // Agent 1
+		{-5.0f, 2.0f, 1.5f}, // Agent 1
+		{0.0f, 20.0f, 1.5f}, // Agent 1
+		{30.0f, 2.0f, 1.5f}, // Agent 1
+		{-49.0f, -18.0f, 1.5f}, // Agent 1
 	};
 
 
 	engines.clear();
 
     // 3. Create and move the engines into the unique_ptr vector
-    engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic, 2, starts));
-    engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann, 2, starts));
-    engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle, 2, starts));
+    engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic, 7, starts));
+    engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann, 7, starts));
+    engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle, 7, starts));
 
 
 	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[0].get()->getAgentCount())));
