@@ -68,7 +68,6 @@ Application::Application()
 
 
 
-
 	// TEMPORARY
 	camera = Camera(
 		0.0f, 3.0f, 0.0f,   // position
@@ -82,19 +81,8 @@ Application::Application()
 	firstMouse = true;
 
 
-	// ENGINES AND SCENES
-	engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic));
-	engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann));
-	engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle));
-	
-	//scenes.push_back(std::make_unique<Scene>());
-	//scenes.push_back(std::make_unique<Scene>());
-	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(1)));
 
-
-	// 2. Apuntar a los activos por defecto (el primero de la lista)
-	if (!engines.empty()) activeEngine = engines[0].get();
-	if (!scenes.empty())  activeScene = scenes[0].get();
+	InitEnginesScenes();
 }
 
 
@@ -177,7 +165,33 @@ void Application::Run()
 }
 
 
+void Application::InitEnginesScenes() {
+	
+	std::vector<InitialState> starts = {
+		{0.0f, 0.0f, 0.0f}, // Agent 0
+		{5.0f, 2.0f, 1.5f}, // Agent 1
+	};
 
+
+	engines.clear();
+
+    // 3. Create and move the engines into the unique_ptr vector
+    engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic, 2, starts));
+    engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann, 2, starts));
+    engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle, 2, starts));
+
+
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[0].get()->getAgentCount())));
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[1].get()->getAgentCount())));
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[2].get()->getAgentCount())));
+
+
+	// 2. Apuntar a los activos por defecto (el primero de la lista)
+	if (!engines.empty()) activeEngine = engines[0].get();
+	if (!scenes.empty())  activeScene = scenes[0].get();
+
+	selectedEngineIndex = 0;
+}
 
 
 void Application::Terminate()

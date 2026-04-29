@@ -35,6 +35,7 @@ public:
     void Run();
     void Terminate();
     void TogglePause();
+    void InitEnginesScenes();
 
     GLFWwindow* window = nullptr;
 
@@ -49,7 +50,6 @@ public:
     Camera camera;
 
 
-    // En Application.h
     std::vector<std::unique_ptr<Engine>> engines;
     Engine* activeEngine = nullptr;
     

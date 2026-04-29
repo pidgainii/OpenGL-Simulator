@@ -28,23 +28,24 @@ enum class SimulationType {
 	Unicycle
 };
 
+struct InitialState {
+    float x, y, theta;
+};
 
 class Engine {
 public:
-    Engine(SimulationType type);
+    // Constructor now takes type, count, and a vector of starting positions
+    Engine(SimulationType type, int numAgents, const std::vector<InitialState>& initialStates);
 
-    void Init();
-    std::vector<float> UpdateSim(float dt);
+    void Init(int numAgents, const std::vector<InitialState>& initialStates);
+    std::vector<std::vector<float>> UpdateSim(float dt);
 
-    float x;
-    float y;
-    float z;
-    float theta;
-
+    // Public getter for the number of agents
+    size_t getAgentCount() const { return agents.size(); }
     std::string getName() const;
 
 private:
-    std::unique_ptr<IAgent> agent;
+    std::vector<std::unique_ptr<IAgent>> agents;
     SimulationType simType;
     std::string name;
 };

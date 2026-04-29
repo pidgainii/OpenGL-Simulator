@@ -30,9 +30,25 @@ Simulation::Simulation() {}
 
 void Simulation::Update(float dt, Engine& engine, std::vector<Renderable>& scene)
 {
-	// We call Sim.Update(dt), which gives us a vector of 3 coordinates (for our plane)
-	std::vector<float> coordinates = engine.UpdateSim(dt);
+    // 1. Get the list of coordinates for ALL agents
+    // Now returns std::vector<std::vector<float>>
+    std::vector<std::vector<float>> allAgentsCoords = engine.UpdateSim(dt);
 
-	scene.at(0).SetCoords(coordinates.at(0), coordinates.at(1), coordinates.at(2), coordinates.at(3));
-	
+    // 2. Iterate through the agents and update their corresponding scene objects
+    for (size_t i = 0; i < allAgentsCoords.size(); ++i)
+    {
+        // Safety check: ensure the scene has enough renderable objects
+        if (i < scene.size())
+        {
+            const std::vector<float>& coords = allAgentsCoords.at(i);
+
+            // coords format: {y, 0.0f, x, theta} 
+            scene.at(i).SetCoords(
+                coords.at(0), // y
+                coords.at(1), // z
+                coords.at(2), // x
+                coords.at(3)  // theta
+            );
+        }
+    }
 }
