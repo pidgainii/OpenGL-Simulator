@@ -10,8 +10,8 @@ class UI {
 public:
     UI(Simulation* sim);
 
-    // Main render loop
-    void Render(int& selectedIdx, bool& isSimulating, const std::vector<std::unique_ptr<Engine>>& engines);
+    void Render(int& selectedIdx, bool& isSimulating, const std::vector<std::unique_ptr<Engine>>& engines, int& numAgents, int& selectedModel, int& selectedTraj, bool& triggerReset);
+    void RenderScenarioSelector(int& selectedIdx, bool& isSimulating, int& numAgents, int& selectedModel, int& selectedTraj, bool& triggerReset);
 
 private:
     void RenderScenarioSelector(int& selectedIdx, bool& isSimulating);
@@ -19,8 +19,5 @@ private:
 
     Simulation* simulation;
 
-    // --- NEW STATE VARIABLE ---
-    // Tracks if we are showing the large configuration menu 
-    // or the tiny "contracted" pause button.
     bool showFullMenu;
 };

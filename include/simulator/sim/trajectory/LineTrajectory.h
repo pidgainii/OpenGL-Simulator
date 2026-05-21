@@ -1,4 +1,3 @@
-// LineTrajectory.h  — agents follow a horizontal line at y = offset
 #pragma once
 #include "ITrajectory.h"
 

@@ -68,7 +68,6 @@ public:
         updateCameraVectors();
 
 
-        /////////////////// TEMPORARY ////////////////////
         projectionMatrix = glm::mat4(1.0f);
         projectionMatrix = glm::perspective(glm::radians(100.0f), 800.0f / 600.0f, 0.1f, 500.0f);
     }
@@ -82,7 +81,6 @@ public:
         updateCameraVectors();
 
 
-        /////////////////// TEMPORARY ////////////////////
         projectionMatrix = glm::mat4(1.0f);
         projectionMatrix = glm::perspective(glm::radians(100.0f), 800.0f / 600.0f, 0.1f, 500.0f);
     }

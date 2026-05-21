@@ -19,50 +19,6 @@
 #include <sstream>
 
 #include "simulator/io/ObjLoader.h"
- /*
-bool loadOBJ(
-    const std::string& path,
-    std::vector<float>& outVertices,
-    std::vector<unsigned int>& outIndices)
-{
-    std::ifstream file(path);
-    if (!file.is_open()) return false;
-
-    std::string line;
-    while (std::getline(file, line))
-    {
-        // Skip comments and empty lines
-        if (line.empty() || line[0] == '#') continue;
-
-        std::stringstream ss(line);
-        char type;
-        ss >> type;
-
-        if (type == 'v')
-        {
-            float x, y, z, r, g, b, a;
-            ss >> x >> y >> z >> r >> g >> b >> a;
-            outVertices.push_back(x);
-            outVertices.push_back(y);
-            outVertices.push_back(z);
-            outVertices.push_back(r);
-            outVertices.push_back(g);
-            outVertices.push_back(b);
-            outVertices.push_back(a);
-        }
-        else if (type == 'f')
-        {
-            unsigned int a, b, c;
-            ss >> a >> b >> c;
-            outIndices.push_back(a);
-            outIndices.push_back(b);
-            outIndices.push_back(c);
-        }
-    }
-    return true;
-}
-
-*/
 
 
 bool loadOBJ(

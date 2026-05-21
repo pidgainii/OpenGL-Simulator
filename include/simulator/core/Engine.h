@@ -34,13 +34,10 @@ struct InitialState {
 
 class Engine {
 public:
-    // Constructor now takes type, count, and a vector of starting positions
-    Engine(SimulationType type, int numAgents, const std::vector<InitialState>& initialStates);
+    Engine(SimulationType type, int numAgents, const std::vector<InitialState>& initialStates, int trajectoryType);
+    void Init(int numAgents, const std::vector<InitialState>& initialStates, int trajectoryType);
+    std::vector<std::vector<float>> UpdateAgents(float dt);
 
-    void Init(int numAgents, const std::vector<InitialState>& initialStates);
-    std::vector<std::vector<float>> UpdateSim(float dt);
-
-    // Public getter for the number of agents
     size_t getAgentCount() const { return agents.size(); }
     std::string getName() const;
 

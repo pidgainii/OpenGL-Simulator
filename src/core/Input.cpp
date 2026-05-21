@@ -22,8 +22,6 @@
 
 
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
 float getDt(GLFWwindow* window, Application* app)
 {
     // should delta time be passed in input????

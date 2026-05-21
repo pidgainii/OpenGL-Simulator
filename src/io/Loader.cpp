@@ -17,36 +17,72 @@
 #include "simulator/io/ObjLoader.h"
 
 #include "simulator/scene/Scene.h"
+#include "simulator/scene/Renderable.h"
 
 Loader::Loader() {}
 
-Scene Loader::LoadScene(int nAgents)
-{
-    std::vector<Renderable> scene;
 
-    
-    // -------- AIRPLANE --------
+Renderable Loader::LoadTrajectoryLine(int trajectoryType) {
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
 
-    // Use proper .obj file
-    loadOBJ("assets/models/airplane.obj", vertices, indices);
+    int segments = 200; // How smooth the line is
+    float pi = 3.14159265359f;
 
-    Mesh* planeMesh = new Mesh(vertices, indices, indices.size());
+    for (int i = 0; i <= segments; i++) {
+        float t = (2.0f * pi * i) / segments;
+        float x = 0.0f, z = 0.0f;
 
-    // -------- RENDERABLES --------
-    Renderable plane = Renderable(planeMesh, GL_TRIANGLES);
+        if (trajectoryType == 0) {
+            // Circle Parametric (Swapped for correct 3D orientation)
+            float r = 20.0f;
+            z = r * cos(t);  // Was x
+            x = r * sin(t);  // Was z
+        }
+        else if (trajectoryType == 1) {
+            // Lemniscate Parametric (Swapped for correct 3D orientation)
+            float a = 35.0f;
+            float scale = a * sqrt(2.0f);
+            float denom = sin(t) * sin(t) + 1.0f;
+
+            z = (scale * cos(t)) / denom;           // Was x
+            x = (scale * cos(t) * sin(t)) / denom;  // Was z
+        }
+
+        // Push Position (x, y, z)
+        vertices.push_back(x);
+        vertices.push_back(0.1f);
+        vertices.push_back(z);
 
 
+        vertices.push_back(1.0f);
+        vertices.push_back(1.0f);
+        vertices.push_back(0.0f);
+        vertices.push_back(1.0f);
 
-    // TODO: For now we are just adding nAgents number of planes with same coordinates
-    // We will need to be able to ask Engine for their initial coordinates I guess
-    // Or will they update on the first Update() call?
-    for (int i = 0; i < nAgents; i++) {
-        // -------- SCENE --------
-        scene.push_back(plane);
+        indices.push_back(i);
     }
 
+    Mesh* trajMesh = new Mesh(vertices, indices, indices.size());
+
+    return Renderable(trajMesh, GL_LINE_STRIP);
+}
+
+Scene Loader::LoadScene(int nAgents, const std::string& objPath, int selectedTraj)
+{
+    std::vector<Renderable> scene;
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+
+    loadOBJ(objPath.c_str(), vertices, indices);
+
+    Mesh* objMesh = new Mesh(vertices, indices, indices.size());
+    Renderable mainObj = Renderable(objMesh, GL_TRIANGLES);
+
+    for (int i = 0; i < nAgents; i++) {
+        scene.push_back(mainObj);
+    }
+    
 
     // -------- GRID ---------
     float gridSize = 1.0f;      // distance between grid lines
@@ -59,7 +95,7 @@ Scene Loader::LoadScene(int nAgents)
         for (int j = 0; j <= gridCount; ++j) {
             float x = (i - gridCount / 2) * gridSize;
             float z = (j - gridCount / 2) * gridSize;
-            float y = -15.0f; // **grid at Y = 0**
+            float y = -0.3f; // **grid at Y = 0**
             // position (x, y, z) + color RGBA blue
             verticesGrid.push_back(x);
             verticesGrid.push_back(y);
@@ -71,7 +107,6 @@ Scene Loader::LoadScene(int nAgents)
         }
     }
 
-    // now create indices for triangles
     for (int i = 0; i < gridCount; ++i) {
         for (int j = 0; j < gridCount; ++j) {
             int row1 = i * (gridCount + 1);
@@ -93,10 +128,13 @@ Scene Loader::LoadScene(int nAgents)
     scene.push_back(grid);
 
 
-
+    // Load and add the trajectory line
+    Renderable trajectoryLine = LoadTrajectoryLine(selectedTraj);
+    scene.push_back(trajectoryLine);
 
 
     Scene myScene(scene);
 
     return myScene;
 }
+

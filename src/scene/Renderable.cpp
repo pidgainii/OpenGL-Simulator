@@ -46,9 +46,8 @@ glm::mat4 Renderable::ModelWorld()
 	// Translate first
 	model = glm::translate(model, glm::vec3(x, y, z));
 
-	// Rotate around vertical axis (y-axis in this example)
+	// Rotate around vertical axis (y-axis)
 	model = glm::rotate(model, theta, glm::vec3(0.0f, 1.0f, 0.0f));
 
-	// Add scaling here if needed
 	return model;
 }

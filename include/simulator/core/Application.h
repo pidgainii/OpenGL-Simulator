@@ -63,4 +63,10 @@ private:
     float lastX;
     float lastY;
     bool firstMouse;
+
+    int configNumAgents = 7;
+    int configSelectedModel = 0;
+    int configSelectedTraj = 0;
+    bool triggerReset = false;
+
 };

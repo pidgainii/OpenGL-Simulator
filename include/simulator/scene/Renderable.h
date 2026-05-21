@@ -31,7 +31,6 @@ class Renderable {
 		Mesh* mesh;
 		GLenum drawingMode;
 
-		// Coordenadas en tiempo real del objeto
 		float x;
 		float y;
 		float z;

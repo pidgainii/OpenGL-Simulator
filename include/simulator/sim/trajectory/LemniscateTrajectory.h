@@ -1,24 +1,24 @@
-// LemniscateTrajectory.h
 #pragma once
 #include "ITrajectory.h"
 #include <cmath>
 
 class LemniscateTrajectory : public ITrajectory {
-    float a; // scale
+    float a;
 public:
-    LemniscateTrajectory(float scale) : a(scale) {}
+    LemniscateTrajectory(float scale) : a(scale) {};
 
-    // phi = (x^2 + y^2)^2 - a^2*(x^2 - y^2)
     float phi(const Vec2& p) const override {
-        float r2 = p.x * p.x + p.y * p.y;
-        return r2 * r2 - a * a * (p.x * p.x - p.y * p.y);
+        float x2y2 = p.x * p.x + p.y * p.y;
+        return (x2y2 * x2y2) - (2 * a * a * (p.x * p.x - p.y * p.y));
     }
+
     Vec2 gradPhi(const Vec2& p) const override {
-        float x = p.x, y = p.y;
-        float r2 = x * x + y * y;
+        float x2y2 = p.x * p.x + p.y * p.y;
+        float a2 = a * a;
+        // Derivative of phi with respect to x and y
         return Vec2{
-            4.0f * x * r2 - 2.0f * a * a * x,
-            4.0f * y * r2 + 2.0f * a * a * y
+            4 * p.x * (x2y2 - a2),
+            4 * p.y * (x2y2 + a2)
         };
     }
 };

@@ -43,8 +43,8 @@ Application::Application()
 	  isSimulating(false),
 	selectedEngineIndex(0)
 {
-	// TODO: Make width and heigh configurable in a different place
 	window = CreateWindow(1400, 900, "Simulation");
+
 	// We give glfw pointer to this Application instance
 	glfwSetWindowUserPointer(window, this);
 
@@ -68,7 +68,7 @@ Application::Application()
 
 
 
-	// TEMPORARY
+	// CAMERA
 	camera = Camera(
 		0.0f, 3.0f, 0.0f,   // position
 		0.0f, 1.0f, 0.0f,    // up vector
@@ -88,18 +88,21 @@ Application::Application()
 
 void Application::Run()
 {
-	// --------------------------- TEMPORARY -------------------------------
-	
-
-	// maybe some functions will be moved to a different class, not the renderer
-	while (!glfwWindowShouldClose(window))
+		while (!glfwWindowShouldClose(window))
 	{
-		// ----------- IMGUI: Before rendering -> 1. Start ImGui frame -----------
+		// ----------- IMGUI: Before rendering -> Start ImGui frame -----------
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		ui.Render(selectedEngineIndex, isSimulating, engines);
+		ui.Render(selectedEngineIndex, isSimulating, engines, configNumAgents, configSelectedModel, configSelectedTraj, triggerReset);
+
+		// CHECK FOR RESET TRIGGER
+		if (triggerReset) {
+			isSimulating = false; // Pause while resetting
+			InitEnginesScenes();  // Rebuild everything
+			triggerReset = false; // Reset the flag
+		}
 
 		ImGuiIO& io = ImGui::GetIO();
 
@@ -130,8 +133,6 @@ void Application::Run()
 		}
 		// -----------------------------------------------------------------------
 
-		// Maybe i should move this somewhere else
-		// Real dt calculations
 		static double lastTime = glfwGetTime();
 		double currentTime = glfwGetTime();
 		float dt = static_cast<float>(currentTime - lastTime);
@@ -145,7 +146,7 @@ void Application::Run()
 		}
 
 		if (isSimulating && activeEngine && activeScene) {
-			sim.Update(0.07, *activeEngine, activeScene->scene);
+			sim.Update(dt*10, *activeEngine, *activeScene);
 		}
 		if (activeScene)
 		{
@@ -166,51 +167,47 @@ void Application::Run()
 
 
 void Application::InitEnginesScenes() {
-	
-	std::vector<InitialState> starts = {
-		{0.1f, -5.0f, 0.0f}, // Agent 0
-		{5.0f, 2.0f, 1.5f}, // Agent 1
-		{14.0f, 7.0f, 1.5f}, // Agent 1
-		{-5.0f, 2.0f, 1.5f}, // Agent 1
-		{0.0f, 20.0f, 1.5f}, // Agent 1
-		{30.0f, 2.0f, 1.5f}, // Agent 1
-		{-49.0f, -18.0f, 1.5f}, // Agent 1
-	};
+	// Generate starting coordinates based on the dynamic configNumAgents
+	std::vector<InitialState> starts;
+	for (int i = 0; i < configNumAgents; i++) {
+		// Simple spread logic so they don't spawn exactly on top of each other
+		starts.push_back({ (float)(30 + i * 4.0f), (float)(-35 + i * -2.0f), 1.5f });
+	}
 
-
+	// Clear old instances
 	engines.clear();
+	scenes.clear();
 
-    // 3. Create and move the engines into the unique_ptr vector
-    engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic, 7, starts));
-    engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann, 7, starts));
-    engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle, 7, starts));
+	// Build Engines with the new trajectory config
+	engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic, configNumAgents, starts, configSelectedTraj));
+	engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann, configNumAgents, starts, configSelectedTraj));
+	engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle, configNumAgents, starts, configSelectedTraj));
 
+	// Map the UI model index to an actual file path
+	std::string objFiles[] = {
+		"assets/models/airplane.obj",
+		"assets/models/car2.obj",
+		"assets/models/drone.obj"
+	};
+	std::string selectedObjPath = objFiles[configSelectedModel];
 
-	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[0].get()->getAgentCount())));
-	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[1].get()->getAgentCount())));
-	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[2].get()->getAgentCount())));
+	// Build Scenes with the dynamic path
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[0]->getAgentCount(), selectedObjPath, configSelectedTraj)));
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[1]->getAgentCount(), selectedObjPath, configSelectedTraj)));
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[2]->getAgentCount(), selectedObjPath, configSelectedTraj)));
 
-
-	// 2. Apuntar a los activos por defecto (el primero de la lista)
-	if (!engines.empty()) activeEngine = engines[0].get();
-	if (!scenes.empty())  activeScene = scenes[0].get();
-
-	selectedEngineIndex = 0;
+	// Reset Active Pointers
+	if (!engines.empty()) activeEngine = engines[selectedEngineIndex].get();
+	if (!scenes.empty())  activeScene = scenes[selectedEngineIndex].get();
 }
 
 
 void Application::Terminate()
 {
-	// we should clean every mesh here
-	// TODO: CLEAN MESH OR RENDERABLE OBJECTS
-
-
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-
-	// tell renderer to clear resources
 	glfwTerminate();
 	glfwDestroyWindow(window);
 	renderer.Clean();

@@ -17,13 +17,6 @@
 #include "simulator/scene/Mesh.h"
 
 
-
-// The mesh class will actually store indices and vertices in GPU once
-// and then we have the access to vao vbo and ebo in order to be able
-// to draw the mesh
-
-
-
 Mesh::Mesh(std::vector<float> vertices, std::vector<unsigned int> indices, GLsizei i)
 {
 	indexCount = i;
@@ -35,14 +28,11 @@ Mesh::Mesh(std::vector<float> vertices, std::vector<unsigned int> indices, GLsiz
 	// store vertices and indices in GPU
 	vao.Bind();
 
-	// TODO: Use variables, no hardcode numbers
 	vbo.Bind();
 	vbo.LoadData(vertices.data(), vertices.size() * sizeof(float));
-	// TODO: same
 	ebo.Bind();
 	ebo.LoadData(indices.data(), indices.size() * sizeof(GLuint));
 
-	// TODO: correct this and see how we can get info about this
 	vao.LoadAttributes(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)0);
 	vao.LoadAttributes(1, 4, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(3 * sizeof(float)));
 
