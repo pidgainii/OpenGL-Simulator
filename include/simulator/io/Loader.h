@@ -16,12 +16,15 @@
 
 
 #include "simulator/scene/Renderable.h"
+#include "simulator/scene/Scene.h"
 
 #include <vector>
+#include <string>
 
 
 class Loader {
 public:
 	Loader();
-	void LoadScene(std::vector<Renderable>& scene);
+	Scene LoadScene(int nAgents, const std::string& objPath, int selectedTraj);
+	Renderable LoadTrajectoryLine(int trajectoryType);
 };

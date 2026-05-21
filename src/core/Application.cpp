@@ -39,11 +39,12 @@ Application::Application()
 	: sim(),
       renderer(),
       loader(),
-      config(),
-      ui(&sim, &config)
+      ui(&sim),
+	  isSimulating(false),
+	selectedEngineIndex(0)
 {
-	// TODO: Make width and heigh configurable in a different place
 	window = CreateWindow(1400, 900, "Simulation");
+
 	// We give glfw pointer to this Application instance
 	glfwSetWindowUserPointer(window, this);
 
@@ -61,7 +62,13 @@ Application::Application()
 
 
 
-	// TEMPORARY
+
+	// RENDERER
+	renderer.Init();
+
+
+
+	// CAMERA
 	camera = Camera(
 		0.0f, 3.0f, 0.0f,   // position
 		0.0f, 1.0f, 0.0f,    // up vector
@@ -72,25 +79,30 @@ Application::Application()
 	lastX = 0.0f;
 	lastY = 0.0f;
 	firstMouse = true;
+
+
+
+	InitEnginesScenes();
 }
 
 
-void Application::Run(Engine& engine)
+void Application::Run()
 {
-	Setup(engine);
-
-	// --------------------------- TEMPORARY -------------------------------
-	
-
-	// maybe some functions will be moved to a different class, not the renderer
-	while (!glfwWindowShouldClose(window))
+		while (!glfwWindowShouldClose(window))
 	{
-		// ----------- IMGUI: Before rendering -> 1. Start ImGui frame -----------
+		// ----------- IMGUI: Before rendering -> Start ImGui frame -----------
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		ui.Render();
+		ui.Render(selectedEngineIndex, isSimulating, engines, configNumAgents, configSelectedModel, configSelectedTraj, triggerReset);
+
+		// CHECK FOR RESET TRIGGER
+		if (triggerReset) {
+			isSimulating = false; // Pause while resetting
+			InitEnginesScenes();  // Rebuild everything
+			triggerReset = false; // Reset the flag
+		}
 
 		ImGuiIO& io = ImGui::GetIO();
 
@@ -121,8 +133,6 @@ void Application::Run(Engine& engine)
 		}
 		// -----------------------------------------------------------------------
 
-		// Maybe i should move this somewhere else
-		// Real dt calculations
 		static double lastTime = glfwGetTime();
 		double currentTime = glfwGetTime();
 		float dt = static_cast<float>(currentTime - lastTime);
@@ -135,9 +145,13 @@ void Application::Run(Engine& engine)
 			processInput(window);
 		}
 
-		sim.Update(dt, engine, scene);
-		renderer.Render(scene, camera.GetViewMatrix(), camera.GetProjectionMatrix());
-
+		if (isSimulating && activeEngine && activeScene) {
+			sim.Update(dt*10, *activeEngine, *activeScene);
+		}
+		if (activeScene)
+		{
+			renderer.Render(activeScene->scene, camera.GetViewMatrix(), camera.GetProjectionMatrix());
+		}
 
 		// --------------- IMGUI -----------------------
 		ImGui::Render();
@@ -152,28 +166,55 @@ void Application::Run(Engine& engine)
 }
 
 
-void Application::Setup(Engine& engine)
-{
-	renderer.Init();
-	loader.LoadScene(scene);
+void Application::InitEnginesScenes() {
+	// Generate starting coordinates based on the dynamic configNumAgents
+	std::vector<InitialState> starts;
+	for (int i = 0; i < configNumAgents; i++) {
+		// Simple spread logic so they don't spawn exactly on top of each other
+		starts.push_back({ (float)(30 + i * 4.0f), (float)(-35 + i * -2.0f), 1.5f });
+	}
+
+	// Clear old instances
+	engines.clear();
+	scenes.clear();
+
+	// Build Engines with the new trajectory config
+	engines.push_back(std::make_unique<Engine>(SimulationType::Holonomic, configNumAgents, starts, configSelectedTraj));
+	engines.push_back(std::make_unique<Engine>(SimulationType::Ackermann, configNumAgents, starts, configSelectedTraj));
+	engines.push_back(std::make_unique<Engine>(SimulationType::Unicycle, configNumAgents, starts, configSelectedTraj));
+
+	// Map the UI model index to an actual file path
+	std::string objFiles[] = {
+		"assets/models/airplane.obj",
+		"assets/models/car2.obj",
+		"assets/models/drone.obj"
+	};
+	std::string selectedObjPath = objFiles[configSelectedModel];
+
+	// Build Scenes with the dynamic path
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[0]->getAgentCount(), selectedObjPath, configSelectedTraj)));
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[1]->getAgentCount(), selectedObjPath, configSelectedTraj)));
+	scenes.push_back(std::make_unique<Scene>(loader.LoadScene(engines[2]->getAgentCount(), selectedObjPath, configSelectedTraj)));
+
+	// Reset Active Pointers
+	if (!engines.empty()) activeEngine = engines[selectedEngineIndex].get();
+	if (!scenes.empty())  activeScene = scenes[selectedEngineIndex].get();
 }
 
 
 void Application::Terminate()
 {
-	// we should clean every mesh here
-	// TODO: CLEAN MESH OR RENDERABLE OBJECTS
-
-
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-
-	// tell renderer to clear resources
 	glfwTerminate();
 	glfwDestroyWindow(window);
 	renderer.Clean();
 }
 
 
+void Application::TogglePause()
+{
+	isSimulating = !isSimulating;
+}

@@ -1,26 +1,23 @@
 #pragma once
+#include <vector>
+#include <memory>
+#include "simulator/core/Engine.h"
 
-#include "imgui.h"
-
-// Forward declarations (avoid heavy includes)
+// Forward declarations
 class Simulation;
-
-struct SimulationConfig {
-    int numAgents = 50;
-    float velocity = 1.0f;
-};
 
 class UI {
 public:
-    UI(Simulation* sim, SimulationConfig* config);
+    UI(Simulation* sim);
 
-    // Called every frame between NewFrame() and Render()
-    void Render();
-
-private:
-    void RenderSimulationPanel();
+    void Render(int& selectedIdx, bool& isSimulating, const std::vector<std::unique_ptr<Engine>>& engines, int& numAgents, int& selectedModel, int& selectedTraj, bool& triggerReset);
+    void RenderScenarioSelector(int& selectedIdx, bool& isSimulating, int& numAgents, int& selectedModel, int& selectedTraj, bool& triggerReset);
 
 private:
+    void RenderScenarioSelector(int& selectedIdx, bool& isSimulating);
+    void RenderSimulationPanel(bool isSimulating);
+
     Simulation* simulation;
-    SimulationConfig* config;
+
+    bool showFullMenu;
 };

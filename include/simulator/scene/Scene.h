@@ -12,21 +12,16 @@
  * limitations under the License.
  */
 
+#pragma once
+
+#include <vector>
+#include "simulator/scene/Renderable.h"
 
 
-#include "simulator/core/Engine.h"
-#include "simulator/core/Application.h"
+class Scene {
+public:
+	Scene();
+	Scene(const std::vector<Renderable>& scene);
 
-
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
-int main()
-{
-	Application app;
-	app.Run();
-	return 0;
-}
-
-
-
+	std::vector<Renderable> scene;
+};

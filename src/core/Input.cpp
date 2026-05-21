@@ -18,10 +18,10 @@
 #include "simulator/core/Application.h"
 #include "simulator/cam/Camera.h"
 
+#include "imgui.h"
 
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
+
 float getDt(GLFWwindow* window, Application* app)
 {
     // should delta time be passed in input????
@@ -39,6 +39,16 @@ void processInput(GLFWwindow* window)
 
     Application* app =
         static_cast<Application*>(glfwGetWindowUserPointer(window));
+
+
+
+    static bool pPressedLastFrame = false;
+    bool pPressedNow = glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS;
+    if (pPressedNow && !pPressedLastFrame)
+    {
+        app->TogglePause();
+    }
+    pPressedLastFrame = pPressedNow;
 
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)

@@ -14,6 +14,7 @@
 
 #include "simulator/core/Engine.h"
 #include "simulator/graphics/Renderer.h"
+#include "simulator/scene/Scene.h"
 
 
 #pragma once
@@ -23,7 +24,7 @@ class Simulation {
 	public:
 		Simulation();
 
-        void Update(float time, Engine& engine, std::vector<Renderable>& scene);
+        void Update(float time, Engine& engine, Scene& scene);
 };
 
 

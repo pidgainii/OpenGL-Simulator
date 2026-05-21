@@ -17,10 +17,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
-
 #include "simulator/sim/Simulation.h"
-
 #include "simulator/core/Engine.h"
+#include "simulator/scene/Scene.h"
 
 
 
@@ -28,11 +27,25 @@ Simulation::Simulation() {}
 
 
 
-void Simulation::Update(float dt, Engine& engine, std::vector<Renderable>& scene)
+void Simulation::Update(float dt, Engine& engine, Scene& scene)
 {
-	// We call Sim.Update(dt), which gives us a vector of 3 coordinates (for our plane)
-	std::vector<float> coordinates = engine.UpdateSim(dt);
+    // Get the list of coordinates for ALL agents
+    // Now returns std::vector<std::vector<float>>
+    std::vector<std::vector<float>> allAgentsCoords = engine.UpdateAgents(dt);
 
-	scene.at(0).SetCoords(coordinates.at(0), coordinates.at(1), coordinates.at(2), coordinates.at(3));
-	
+    // Iterate through the agents and update their corresponding scene objects
+    for (size_t i = 0; i < allAgentsCoords.size(); ++i)
+    {
+        if (i < scene.scene.size())
+        {
+            const std::vector<float>& coords = allAgentsCoords.at(i);
+
+            scene.scene.at(i).SetCoords(
+                coords.at(0), // y
+                coords.at(1), // z
+                coords.at(2), // x
+                coords.at(3)  // theta
+            );
+        }
+    }
 }

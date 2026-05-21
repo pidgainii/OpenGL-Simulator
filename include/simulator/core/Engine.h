@@ -16,23 +16,33 @@
 
 #include <memory>
 #include <vector>
+#include <string>
 #include "simulator/sim/agent/IAgent.h"
 #include "simulator/sim/common/Pos.h"
 
+
+
+enum class SimulationType {
+	Holonomic,
+	Ackermann,
+	Unicycle
+};
+
+struct InitialState {
+    float x, y, theta;
+};
+
 class Engine {
 public:
-	Engine();
+    Engine(SimulationType type, int numAgents, const std::vector<InitialState>& initialStates, int trajectoryType);
+    void Init(int numAgents, const std::vector<InitialState>& initialStates, int trajectoryType);
+    std::vector<std::vector<float>> UpdateAgents(float dt);
 
-	void Init();
-	std::vector<float> UpdateSim(float dt);
-
-
-	// Coordenadas en tiempo real del objeto
-	float x;
-	float y;
-	float z;
-	float theta;
+    size_t getAgentCount() const { return agents.size(); }
+    std::string getName() const;
 
 private:
-	std::unique_ptr<IAgent> agent; //añadimos un único agente
+    std::vector<std::unique_ptr<IAgent>> agents;
+    SimulationType simType;
+    std::string name;
 };

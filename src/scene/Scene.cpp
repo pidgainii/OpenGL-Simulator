@@ -14,19 +14,10 @@
 
 
 
-#include "simulator/core/Engine.h"
-#include "simulator/core/Application.h"
+#include "simulator/scene/Scene.h"
 
+Scene::Scene() {}
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
-int main()
-{
-	Application app;
-	app.Run();
-	return 0;
+Scene::Scene(const std::vector<Renderable>& scene)
+    : scene(scene) {
 }
-
-
-
