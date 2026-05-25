@@ -2,8 +2,7 @@
 
 HolonomicControl HolonomicController::compute(const HolonomicState& s,
     const ITrajectory& traj,
-    const GVFHolonomic& gvf) const
-{
-    Vec2 V = gvf.field(s.p, traj);
-    return HolonomicControl{ V };
+    const GVFHolonomic& gvf) const {
+    auto V = gvf.field(s.p, s.w, traj);
+    return HolonomicControl{ Vec2{V.vx, V.vy}, V.w_dot };
 }

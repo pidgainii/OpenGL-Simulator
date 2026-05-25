@@ -10,7 +10,7 @@
 inline std::unique_ptr<ITrajectory> MakeTrajectory(TrajectoryType type) {
     switch (type) {
     case TrajectoryType::Circle:      return std::make_unique<CircleTrajectory>(20.0f);
-    case TrajectoryType::Lemniscate:  return std::make_unique<LemniscateTrajectory>(15.0f);
+    case TrajectoryType::Lemniscate:  return std::make_unique<LemniscateTrajectory>(35.0f);
     case TrajectoryType::Line:        return std::make_unique<LineTrajectory>(0.0f);
     default:                          return std::make_unique<CircleTrajectory>(20.0f);
     }

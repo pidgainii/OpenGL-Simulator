@@ -10,7 +10,7 @@ UnicycleControl UnicycleController::compute(const UnicycleState& s,
 {
     Vec2 p{ s.x, s.y };
 
-    float theta_d = gvf.desiredHeading(p, traj);
+    float theta_d = gvf.desiredHeading(p, 0.0, traj);
 
     float error_theta = std::atan2(std::sin(theta_d - s.theta), std::cos(theta_d - s.theta));
 

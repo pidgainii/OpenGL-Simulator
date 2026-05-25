@@ -1,24 +1,94 @@
 #include "simulator/sim/agent/AckermannAgent.h"
+#include <cmath>
+#include <algorithm>
 
-#include <memory>
+static constexpr float TWO_PI = 2.0f * 3.14159265358979323846f;
 
 AckermannAgent::AckermannAgent(AckermannState initial,
     float wheelbase,
     float speed,
     float deltaMaxRad,
+    float khdg,
     std::unique_ptr<ITrajectory> trajectory,
     float gvfGain)
     : state(initial)
     , model(wheelbase)
-    , controller(speed, deltaMaxRad)
+    , controller(speed, deltaMaxRad, wheelbase, khdg)
     , gvf(gvfGain)
     , traj(std::move(trajectory))
+    , L(wheelbase)
+    , v(speed)
+    , deltaMax(deltaMaxRad)
+    , kHdg(khdg)
+    , k(gvfGain)
 {
+    float best_w = 0.0f;
+    float best_dist = 1e9f;
+    for (int i = 0; i < 500; ++i) {
+        float w_candidate = TWO_PI * i / 500.0f;
+        Vec2  fp = traj->f(w_candidate);
+        float dx = state.x - fp.x;
+        float dy = state.y - fp.y;
+        float d = dx * dx + dy * dy;
+        if (d < best_dist) { best_dist = d; best_w = w_candidate; }
+    }
+    state.w = best_w;
 }
 
 void AckermannAgent::step(float dt) {
-    AckermannControl u = controller.compute(state, *traj, gvf);
-    state = model.step(state, u, dt);
+    float x = state.x;
+    float y = state.y;
+    float theta = state.theta;
+    float w = state.w;
+
+    Vec2  fw = traj->f(w);
+    Vec2  dfw = traj->df(w);
+
+    float phi_x = x - fw.x;
+    float phi_y = y - fw.y;
+
+    float vx = dfw.x - k * phi_x;
+    float vy = dfw.y - k * phi_y;
+    float w_dot = 1.0f + k * (phi_x * dfw.x + phi_y * dfw.y);
+
+    float norm = std::hypot(vx, vy);
+    if (norm > 1e-8f) {
+        float scale = 1.0f / norm;
+        vx *= scale;
+        vy *= scale;
+        w_dot *= scale;
+    }
+
+    float theta_d = std::atan2(vy, vx);
+
+    float e_theta = std::atan2(
+        std::sin(theta_d - theta),
+        std::cos(theta_d - theta)
+    );
+
+    // steering Ackermann
+    float delta = std::clamp(
+        std::atan(L * kHdg * e_theta),
+        -deltaMax, deltaMax
+    );
+
+    float df_sq = dfw.x * dfw.x + dfw.y * dfw.y;
+    if (df_sq < 1e-8f) df_sq = 1e-8f;
+    float vx_phys = v * std::cos(theta);
+    float vy_phys = v * std::sin(theta);
+    float w_dot_phys = (vx_phys * dfw.x + vy_phys * dfw.y) / df_sq;
+
+    state.x += v * std::cos(theta) * dt;
+    state.y += v * std::sin(theta) * dt;
+    state.theta += (v / L) * std::tan(delta) * dt;
+
+    // wrap theta
+    state.theta = std::atan2(std::sin(state.theta), std::cos(state.theta));
+
+    state.w += w_dot_phys * dt;
+
+    state.w = std::fmod(state.w, TWO_PI);
+    if (state.w < 0.0f) state.w += TWO_PI;
 }
 
 Pos AckermannAgent::pos() const {

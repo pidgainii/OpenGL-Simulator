@@ -1,4 +1,4 @@
 #pragma once
 
-struct UnicycleState { float x = 0, y = 0, theta = 0; };
+struct UnicycleState { float x = 0, y = 0, theta = 0; float w = 0.0f; };
 struct UnicycleControl { float v = 0; float omega = 0; };

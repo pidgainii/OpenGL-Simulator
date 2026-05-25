@@ -24,10 +24,8 @@ void Renderer::Init()
 	// Now we will activate OpenGL functions with GLAD loader
 	gladLoadGL();
 
-	// TODO: make variables for width and height
 	glViewport(0, 0, 1400, 900);
 
-	// TODO: specify shaders in some other way
 	shaderProgram = ShaderProgram(
 		"assets/shaders/default.vert",
 		"assets/shaders/default.frag"

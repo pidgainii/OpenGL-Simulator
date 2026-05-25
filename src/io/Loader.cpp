@@ -34,25 +34,22 @@ Renderable Loader::LoadTrajectoryLine(int trajectoryType) {
         float x = 0.0f, z = 0.0f;
 
         if (trajectoryType == 0) {
-            // Circle Parametric (Swapped for correct 3D orientation)
             float r = 20.0f;
-            z = r * cos(t);  // Was x
-            x = r * sin(t);  // Was z
+            z = r * cos(t);
+            x = r * sin(t);
         }
         else if (trajectoryType == 1) {
-            // Lemniscate Parametric (Swapped for correct 3D orientation)
             float a = 35.0f;
-            float scale = a * sqrt(2.0f);
-            float denom = sin(t) * sin(t) + 1.0f;
+            float denom = (sin(t) * sin(t) + 1.0f);
 
-            z = (scale * cos(t)) / denom;           // Was x
-            x = (scale * cos(t) * sin(t)) / denom;  // Was z
+            x = a * cos(t) / denom;
+            z = a * sin(t) * cos(t) / denom;
         }
 
         // Push Position (x, y, z)
-        vertices.push_back(x);
-        vertices.push_back(0.1f);
         vertices.push_back(z);
+        vertices.push_back(0.1f);
+        vertices.push_back(x);
 
 
         vertices.push_back(1.0f);

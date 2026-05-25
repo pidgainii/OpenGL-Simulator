@@ -31,7 +31,7 @@
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
-
+#include <random>
 
 
 
@@ -169,11 +169,23 @@ void Application::Run()
 void Application::InitEnginesScenes() {
 	// Generate starting coordinates based on the dynamic configNumAgents
 	std::vector<InitialState> starts;
-	for (int i = 0; i < configNumAgents; i++) {
-		// Simple spread logic so they don't spawn exactly on top of each other
-		starts.push_back({ (float)(30 + i * 4.0f), (float)(-35 + i * -2.0f), 1.5f });
-	}
 
+	std::random_device rd;
+	std::mt19937 gen(rd());
+
+	std::uniform_real_distribution<float> distX(-60.0f, 60.0f);
+	std::uniform_real_distribution<float> distY(-40.0f, 40.0f);
+
+	std::uniform_real_distribution<float> distW(0.0f, 2.0f * 3.14159f);
+
+	for (int i = 0; i < configNumAgents; i++) {
+
+		float x = distX(gen);
+		float y = distY(gen);
+		float w = distW(gen);
+
+		starts.push_back({ x, y, w });
+	}
 	// Clear old instances
 	engines.clear();
 	scenes.clear();
