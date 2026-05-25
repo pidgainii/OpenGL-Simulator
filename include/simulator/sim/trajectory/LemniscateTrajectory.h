@@ -17,7 +17,7 @@ public:
     }
 
     // Parametrización f(w)
-    Vec2 f(float w) const {
+    Vec2 f(float w) const override {
         float denom = 1.0f + std::sin(w) * std::sin(w);
         return Vec2{
             a * std::cos(w) / denom,
@@ -25,7 +25,7 @@ public:
         };
     }
 
-    Vec2 df(float w) const {
+    Vec2 df(float w) const override {
         float sw = std::sin(w), cw = std::cos(w);
         float denom = (1.0f + sw * sw) * (1.0f + sw * sw);
 

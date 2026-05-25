@@ -30,5 +30,5 @@ public:
         return (vel.x * dfw.x + vel.y * dfw.y) / df_sq;
     }
 
-    float getK() const { return k; }
+    float getK() const { return k; }z
 };

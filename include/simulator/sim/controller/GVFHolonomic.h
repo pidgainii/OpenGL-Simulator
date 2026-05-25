@@ -1,5 +1,6 @@
 #pragma once
 #include "simulator/sim/trajectory/ITrajectory.h"
+#include "simulator/sim/common/Vec3.h"
 #include <cmath>
 #include <algorithm>
 
@@ -10,22 +11,37 @@ public:
 
     struct Field3 { float vx, vy, w_dot; };
 
-    Field3 field(const Vec2& p, float w, const ITrajectory& traj) const {
-        Vec2  fp = traj.f(w);
-        Vec2  df = traj.df(w);
+Field3 field(const Vec2& p, float w, const ITrajectory& traj) const {
+    Vec2 fp = traj.f(w);
+    Vec2 df = traj.df(w);
 
-        float ex = p.x - fp.x;
-        float ey = p.y - fp.y;
+    float ex = p.x - fp.x;
+    float ey = p.y - fp.y;
 
-        float vx = df.x - k * ex;
-        float vy = df.y - k * ey;
+    Vec3 g1 = {1.f, 0.f, -df.x};
+    Vec3 g2 = {0.f, 1.f, -df.y};
 
-        float nrm2 = std::sqrt(vx * vx + vy * vy);
-        if (nrm2 > 1e-8f) { vx /= nrm2; vy /= nrm2; }
+    Vec3 Vtan = cross(g1, g2);
 
-        float df_sq = std::max(df.x * df.x + df.y * df.y, 1e-8f);
-        float w_dot = (vx * df.x + vy * df.y) / df_sq;
+    Vec3 Vnorm = {
+        -k * (ex * g1.x + ey * g2.x),
+        -k * (ex * g1.y + ey * g2.y),
+        -k * (ex * g1.w + ey * g2.w)
+    };
 
-        return { vx, vy, w_dot };
+    Vec3 V = {
+        Vtan.x + Vnorm.x,
+        Vtan.y + Vnorm.y,
+        Vtan.w + Vnorm.w
+    };
+
+    float nrm = std::sqrt(V.x*V.x + V.y*V.y + V.w*V.w);
+    if (nrm > 1e-8f) {
+        V.x /= nrm;
+        V.y /= nrm;
+        V.w /= nrm;
     }
+
+    return { V.x, V.y, V.w };
+}
 };
