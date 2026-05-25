@@ -39,9 +39,7 @@ class Renderer
 
 		void EnableDepthTest();
 
-		// TEMPORARY ARGUMENTS: worldView, viewProj
 		void Render(std::vector<Renderable> scene, glm::mat4 worldView, glm::mat4 viewProj);
 
-		// delete buffers and shader program
 		void Clean();
 };
