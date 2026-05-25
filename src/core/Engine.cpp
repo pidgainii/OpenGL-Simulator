@@ -53,11 +53,11 @@ void Engine::Init(int numAgents, const std::vector<InitialState>& initialStates,
             agents.push_back(std::make_unique<AckermannAgent>(
                 AckermannState{ startX, startY, startTheta },
                 2.0f,              // wheelbase 
-                2.0f,              // speed
+                1.0f,              // speed
                 1.0f,            // deltaMax 
                 1.0f,              // kHdg
                 std::move(traj),
-                3.0f               // GVF gain 
+                1.0f               // GVF gain 
             ));
             break;
 
@@ -65,9 +65,9 @@ void Engine::Init(int numAgents, const std::vector<InitialState>& initialStates,
             agents.push_back(std::make_unique<UnicycleAgent>(
                 UnicycleState{ startX, startY, startTheta }, // Initial state
                 1.0f,             // Speed
-                0.05f,             // Angular velocity gain (kTheta)
+                2.0f,             // Angular velocity gain (kTheta)
                 std::move(traj),  // Pass unique_ptr safely
-                0.01f             // GVF Gain
+                1.0f             // GVF Gain
             ));
             break;
         }

@@ -13,6 +13,9 @@ class UnicycleAgent final : public IAgent {
     UnicycleController controller;
     GVF gvf;
     std::unique_ptr<ITrajectory> traj;
+    float v;
+    float k_theta;
+    float k;
 
 public:
     UnicycleAgent(UnicycleState initial,

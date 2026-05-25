@@ -13,6 +13,11 @@ class AckermannAgent final : public IAgent {
     AckermannController controller;
     GVF gvf;
     std::unique_ptr<ITrajectory> traj;
+    float L;
+    float v;
+    float deltaMax;
+    float kHdg;
+    float k;
 
 public:
     AckermannAgent(AckermannState initial,
