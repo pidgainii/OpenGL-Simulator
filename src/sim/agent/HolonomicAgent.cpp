@@ -28,39 +28,56 @@ HolonomicAgent::HolonomicAgent(HolonomicState initial,
     state.w = best_w;
 }
 
-void HolonomicAgent::step(float dt) {
-    Vec2  p = state.p;
+void HolonomicAgent::step(float dt)
+{
+    float x = state.p.x;
+    float y = state.p.y;
     float w = state.w;
 
-    Vec2  fw = traj->f(w);
-    Vec2  dfw = traj->df(w);
+    Vec2 f = traj->f(w);
+    Vec2 df = traj->df(w);
 
-    float phi_x = p.x - fw.x;
-    float phi_y = p.y - fw.y;
+    float fx = f.x;
+    float fy = f.y;
 
-    float vx = dfw.x - k * phi_x;
-    float vy = dfw.y - k * phi_y;
+    float dfx = df.x;
+    float dfy = df.y;
 
-    float norm = std::hypot(vx, vy);
+    float phi1 = x - fx;
+    float phi2 = y - fy;
+
+    Vec3 g1 = { 1.0f, 0.0f, -dfx };
+    Vec3 g2 = { 0.0f, 1.0f, -dfy };
+
+    Vec3 Vtan;
+    Vtan.x = g1.y * g2.w - g1.w * g2.y;
+    Vtan.y = g1.w * g2.x - g1.x * g2.w;
+    Vtan.w = g1.x * g2.y - g1.y * g2.x;
+
+    float k = this->k;
+
+    Vec3 Vnorm;
+    Vnorm.x = -k * (phi1 * g1.x + phi2 * g2.x);
+    Vnorm.y = -k * (phi1 * g1.y + phi2 * g2.y);
+    Vnorm.w = -k * (phi1 * g1.w + phi2 * g2.w);
+
+    Vec3 V;
+    V.x = Vtan.x + Vnorm.x;
+    V.y = Vtan.y + Vnorm.y;
+    V.w = Vtan.w + Vnorm.w;
+
+    float norm = std::sqrt(V.x * V.x + V.y * V.y + V.w * V.w);
     if (norm > 1e-8f) {
-        vx /= norm;
-        vy /= norm;
+        V.x /= norm;
+        V.y /= norm;
+        V.w /= norm;
     }
 
-    float df_sq = dfw.x * dfw.x + dfw.y * dfw.y;
-    df_sq = std::max(df_sq, 1e-8f);
+    state.p.x += V.x * dt;
+    state.p.y += V.y * dt;
+    state.w += V.w * dt;
 
-    float w_dot = (vx * dfw.x + vy * dfw.y) / df_sq;
-
-    state.p.x += vx * dt;
-    state.p.y += vy * dt;
-    state.w += w_dot * dt;
-
-    state.w = std::fmod(state.w, TWO_PI);
-    if (state.w < 0.0f) state.w += TWO_PI;
-
-    if (std::abs(vx) > 1e-6f || std::abs(vy) > 1e-6f)
-        lastTheta = std::atan2(vy, vx);
+    lastTheta = std::atan2(V.y, V.x);
 }
 
 Pos HolonomicAgent::pos() const {
