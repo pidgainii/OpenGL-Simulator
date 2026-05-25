@@ -254,10 +254,17 @@ void UI::RenderScenarioSelector(
     ImGui::Separator();
     ImGui::Spacing();
 
+    const char* descriptions[] = {
+        "Holonomic vehicles can move freely in any direction without orientation constraints. This model is useful for validating ideal trajectory tracking behaviour and controller performance under simplified dynamics.",
+
+        "Ackermann steering models realistic car-like vehicles with non-holonomic constraints. Agents cannot move sideways and must steer to change direction, making this model suitable for autonomous driving simulations.",
+
+        "Unicycle models differential-drive style robots with forward motion and rotational velocity control. This model captures non-holonomic motion constraints while remaining simpler than Ackermann steering."
+    };
+
     ImGui::TextWrapped(
-        "This model handles the mathematical constraints "
-        "of agent movement. Ensure the environment scale "
-        "matches the propulsion dynamics."
+        "%s",
+        descriptions[selectedIdx]
     );
 
     ImGui::EndChild();
@@ -282,7 +289,7 @@ void UI::RenderScenarioSelector(
     );
 
     if (ImGui::Button(
-        "INICIAR SIMULACION",
+        "START SIMULATION",
         ImVec2(-1, buttonHeight)
     )) {
         isSimulating = true;
