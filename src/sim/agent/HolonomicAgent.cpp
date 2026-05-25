@@ -40,15 +40,17 @@ void HolonomicAgent::step(float dt) {
 
     float vx = dfw.x - k * phi_x;
     float vy = dfw.y - k * phi_y;
-    float w_dot = 1.0f + k * (phi_x * dfw.x + phi_y * dfw.y);
 
     float norm = std::hypot(vx, vy);
     if (norm > 1e-8f) {
-        float scale = 1.0f / norm;
-        vx *= scale;
-        vy *= scale;
-        w_dot *= scale;  
+        vx /= norm;
+        vy /= norm;
     }
+
+    float df_sq = dfw.x * dfw.x + dfw.y * dfw.y;
+    df_sq = std::max(df_sq, 1e-8f);
+
+    float w_dot = (vx * dfw.x + vy * dfw.y) / df_sq;
 
     state.p.x += vx * dt;
     state.p.y += vy * dt;
