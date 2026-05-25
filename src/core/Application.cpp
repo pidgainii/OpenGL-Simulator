@@ -171,7 +171,7 @@ void Application::InitEnginesScenes() {
 	std::vector<InitialState> starts;
 	for (int i = 0; i < configNumAgents; i++) {
 		// Simple spread logic so they don't spawn exactly on top of each other
-		starts.push_back({ (float)(30 + i * 4.0f), (float)(-35 + i * -2.0f), 1.5f });
+		starts.push_back({ (float)(90 + i * 4.0f), (float)(-35 + i * -2.0f), 1.5f });
 	}
 
 	// Clear old instances

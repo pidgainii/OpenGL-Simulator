@@ -45,18 +45,19 @@ void Engine::Init(int numAgents, const std::vector<InitialState>& initialStates,
             agents.push_back(std::make_unique<HolonomicAgent>(
                 HolonomicState{ Vec2{ startX, startY } },
                 std::move(traj),
-                0.01f
+                1.0f
             ));
             break;
 
         case SimulationType::Ackermann:
             agents.push_back(std::make_unique<AckermannAgent>(
                 AckermannState{ startX, startY, startTheta },
-                1.0f,             // Wheelbase
-                0.5f,             // Speed
-                0.6f,             // Max steering angle
+                2.0f,              // wheelbase 
+                2.0f,              // speed
+                1.0f,            // deltaMax 
+                1.0f,              // kHdg
                 std::move(traj),
-                0.1f
+                3.0f               // GVF gain 
             ));
             break;
 

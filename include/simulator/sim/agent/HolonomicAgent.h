@@ -14,7 +14,6 @@ class HolonomicAgent final : public IAgent {
     HolonomicController controller;
     GVFHolonomic gvf;                 
     std::unique_ptr<ITrajectory> traj;
-
     float lastTheta = 0.0f; 
 
 public:

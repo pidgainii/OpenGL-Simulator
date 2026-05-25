@@ -19,6 +19,7 @@ public:
         float wheelbase,
         float speed,
         float deltaMaxRad,
+        float headingGain,
         std::unique_ptr<ITrajectory> trajectory,
         float gvfGain = 0.2f);
 

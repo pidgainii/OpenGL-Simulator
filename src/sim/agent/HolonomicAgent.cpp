@@ -15,7 +15,6 @@ void HolonomicAgent::step(float dt) {
     HolonomicControl u = controller.compute(state, *traj, gvf);
     state = model.step(state, u, dt);
 
-    // orientation for rendering (direction of motion)
     if (std::abs(u.v.x) > 1e-6f || std::abs(u.v.y) > 1e-6f) {
         lastTheta = std::atan2(u.v.y, u.v.x);
     }

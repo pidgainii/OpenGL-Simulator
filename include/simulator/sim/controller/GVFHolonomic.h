@@ -1,31 +1,31 @@
 #pragma once
 #include "simulator/sim/trajectory/ITrajectory.h"
 #include <cmath>
+#include <algorithm>
 
 class GVFHolonomic {
     float k;
-
-    static float norm(const Vec2& v) {
-        return std::sqrt(v.x * v.x + v.y * v.y);
-    }
-
 public:
-    GVFHolonomic(float gain = 0.2f) : k(gain) {};
+    GVFHolonomic(float gain = 1.0f) : k(gain) {}
 
-    Vec2 field(const Vec2& p, const ITrajectory& path) const {
-        Vec2 g = path.gradPhi(p);
-        Vec2 t{ -g.y, g.x };
+    struct Field3 { float vx, vy, w_dot; };
 
-        float ph = path.phi(p);
-        Vec2 n{ -k * ph * g.x, -k * ph * g.y };
+    Field3 field(const Vec2& p, float w, const ITrajectory& traj) const {
+        Vec2  fp = traj.f(w);
+        Vec2  df = traj.df(w);
 
-        Vec2 V{ t.x + n.x, t.y + n.y };
+        float ex = p.x - fp.x;
+        float ey = p.y - fp.y;
 
-        float nrm = norm(V);
-        if (nrm > 1e-6f) {
-            V.x /= nrm;
-            V.y /= nrm;
-        }
-        return V;
+        float vx = df.x - k * ex;
+        float vy = df.y - k * ey;
+
+        float nrm2 = std::sqrt(vx * vx + vy * vy);
+        if (nrm2 > 1e-8f) { vx /= nrm2; vy /= nrm2; }
+
+        float df_sq = std::max(df.x * df.x + df.y * df.y, 1e-8f);
+        float w_dot = (vx * df.x + vy * df.y) / df_sq;
+
+        return { vx, vy, w_dot };
     }
 };
